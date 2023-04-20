@@ -5,4 +5,4 @@ The installation is simple just clone this repository and use this basic command
 # How to Run the application
 `!pip install flask` => for download the flask framework, skip if you already install flask.
 
-`pyhton -m flask --app starter run --debug` => for running the flask program and creating the local environment for developing.
+`python -m flask --app starter run --debug` => for running the flask program and creating the local environment for developing.
