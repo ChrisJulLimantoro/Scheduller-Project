@@ -1,4 +1,4 @@
 # ignore all __pycache__/
-__pycache__/*
+*/__pycache__/*
 # ignore all versions/
 versions/*
