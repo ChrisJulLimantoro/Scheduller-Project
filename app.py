@@ -1,10 +1,10 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from config import *
 # initiate app (flask based)
 app = Flask(__name__)
-# URI depends on [engine]://[username]:[password]@[localhost]/[database]
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Aklsa!23#21@localhost/scheduller_kb'
+app.config['SQLALCHEMY_DATABASE_URI'] = getSQLAlchemyURI()
 
 # initiate database connection (using sqlachemy)
 db = SQLAlchemy(app)

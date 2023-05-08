@@ -15,6 +15,8 @@ The installation is simple just clone this repository and use this basic command
 
 ## How to Run and early setup
 
+To Setup fo to file config.py and setting your own connection to your database. The default database in this porject id postgres.
+
 `python -m flask db init` => for initiation database and will create migrations folder
 
 `python -m flask db migrate` => for migration table to database automatically
