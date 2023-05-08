@@ -3,7 +3,7 @@
 This is a project based on python and flask framework.
 The installation is simple just clone this repository and use this basic command.
 
-# Requirement and installation
+## Requirement and installation
 
 `pip install flask` => for download the flask framework, skip if you already install flask.
 
@@ -13,7 +13,7 @@ The installation is simple just clone this repository and use this basic command
 
 `pip install psycopg2-binary` => only download if you are using postgres
 
-# How to Run and early setup
+## How to Run and early setup
 
 `python -m flask db init` => for initiation database and will create migrations folder
 
