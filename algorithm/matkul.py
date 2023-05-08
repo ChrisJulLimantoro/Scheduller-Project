@@ -11,7 +11,7 @@ class Matkul:
         self.sks = sks
         
     def print(self):
-        print("Nama Matkul : ",self.nama," ",self.paralel)
+        print("Nama Matkul : ",self.nama+" "+self.paralel)
         print("Jadwal      : ",convertIntToJadwal(self.jadwalKelas,self.lamaKelas))
         print("Nama Dosen  : ",self.dosen)
         print("sks         : ",self.sks)
@@ -53,6 +53,3 @@ def convertIntToJadwal(convJadwal,lama):
         
     result += ',' +str(jam) + ':' + str(menit) + '-' + str(jamAkhir) + ':' +str(menitAkhir)
     return result
-
-matkul = Matkul("APB","A","P 502","Krisna Wahyudi",31,6,5,3)
-matkul.print()
