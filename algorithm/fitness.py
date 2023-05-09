@@ -2,7 +2,7 @@ from matkul import Matkul
 import numpy as np 
 import random
 
-def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk:list=[1,1,1,1,1,1],maksJam:list=[20,20,20,20,20,20],dosenFav:list=[],matkulFav:list=[]) -> int:
+def cekFitness(state:list,listMat:list,minSks:int=15,maksSks:int=24,hariMasuk:list=[1,1,1,1,1,1],maksJam:list=[20,20,20,20,20,20],dosenFav:list=[],matkulFav:list=[]) -> int:
     countSks = 0
     countJam = [0,0,0,0,0,0]
     fitness = 0
@@ -13,27 +13,13 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
             continue
         else :
             # array kelas
+            # print(state)
+            # print(len(listMat))
+            # print(len(state))
+            # print(listMat)
             active.append(listMat[i].singkatan)
+            # print(len(active))
             
-            # cek Collision jadwal kelas
-            for j in range(i+1,state.__len__()):
-                if state[j] == 1:
-                    if listMat[j].jadwalKelas >= listMat[i].jadwalKelas and listMat[j].jadwalKelas < (listMat[i].jadwalKelas + listMat[i].lamaKelas):
-                        fitness -= 10000
-                    elif listMat[i].jadwalKelas >= listMat[j].jadwalKelas and listMat[i].jadwalKelas < (listMat[j].jadwalKelas + listMat[j].lamaKelas):
-                        fitness -= 10000
-                else:
-                    continue
-            
-            # cek Collision jadwal ujian
-            for j in range(i+1,state.__len__()):
-                if state[j] == 1:
-                    if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
-                        fitness -= 2000
-                    elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
-                        fitness -= 2000
-                else:
-                    continue
             # print('cek Collision : ',i,fitness)
             # cek jumlah sks
             countSks+=listMat[i].sks
@@ -51,6 +37,7 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
                 fitness += 80
     # print(countJam)
     # perhitungan fitness
+    fitness += cekCollision(state, listMat)
     fitness += cekSks(countSks,minSks,maksSks) # cek SKS
     # print('cekSKs : ',fitness)
     fitness += cekJam(countJam,maksJam) # cek Jumlah Jam
@@ -59,6 +46,27 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
     # print('cekHari : ',fitness)
     fitness += cekKembar(active) # cek kembar
     return fitness
+
+def cekCollision(state:list, listMat:list) -> int:
+    result = 0
+    for i in range(len(state)):
+        # cek Collision jadwal kelas
+        for j in range(i+1,state.__len__()):
+            if state[j] == 1:
+                if listMat[j].jadwalKelas >= listMat[i].jadwalKelas and listMat[j].jadwalKelas < (listMat[i].jadwalKelas + listMat[i].lamaKelas):
+                    result -= 10000
+                elif listMat[i].jadwalKelas >= listMat[j].jadwalKelas and listMat[i].jadwalKelas < (listMat[j].jadwalKelas + listMat[j].lamaKelas):
+                    result -= 10000
+
+        # cek Collision jadwal ujian
+        for j in range(i+1,state.__len__()):
+            if state[j] == 1:
+                if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
+                    result -= 2000
+                elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
+                    result -= 2000
+
+    return result
 
 # function u/ cek kembar
 def cekKembar(active:list) -> int:
@@ -71,8 +79,10 @@ def cekKembar(active:list) -> int:
 
 # function u/ cek fitness SKS
 def cekSks(count:int,minSks:int,maksSks:int) -> int:
-    if count > maksSks or count < minSks:
-        return -1000
+    if count > maksSks:
+        return -10000
+    elif count < minSks :
+        return -10000*(minSks - count)
     else:
         return 200-(maksSks-count)*20
 
