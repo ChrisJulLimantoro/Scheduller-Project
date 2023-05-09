@@ -24,7 +24,7 @@ def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:l
         fitness = []
         # itung fitness dari tiap states
         for i in range(states.__len__()):
-            fitness.append(cekFitness(states[i], listMatkul))
+            fitness.append(cekFitness(states[i], listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav))
 
             if len(best) == 0:
                 best.append([states[i], fitness[i]])
@@ -59,14 +59,14 @@ def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:l
             p2 = randomSelect(fitness)
 
             child = crossover(best[p1][0], states[p2])
-            scoreChild = cekFitness(child, listMatkul)
+            scoreChild = cekFitness(child, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
             percentage = 0.002
             # print(child)
             if scoreChild <= 0:
                 percentage = 0.002 * abs(scoreChild)/100
             if (random.random() <= percentage):
                 print('Before mutation:', child)
-                mutate(child, listMatkul)
+                mutate(child, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
                 print('After mutation:', child)
             newStates.append(child)
 
@@ -157,9 +157,9 @@ def algoCross3(p1:list,p2:list):
             result[i] = p2[i]
     return result
 
-def mutate(gene:list, listMatkul:list):
+def mutate(gene:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list):
     # semi random mutate tidak merubah jumlah angka 1 yang digunakan karena ingin mempertahankan best
-    score = cekFitness(gene, listMatkul)
+    score = cekFitness(gene, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
     mutator = []
     if score < 0:
         for i in range(1+ ((int)(abs(score)/50000))):
@@ -235,34 +235,34 @@ def randomSelectBest(best:list) -> int:
 # Sabtu = 135 
 
 listMat = [
-    Matkul("Cyber Ops", "Cops", "B", "P 502", "Andreas", 0, 6, 2, 3),
+    # Matkul("Cyber Ops", "Cops", "B", "P 502", "Andreas", 0, 6, 2, 3),
     Matkul("Cyber Ops", "Cops", "A", "P 502", "Andreas", 27, 6, 2, 3),
     Matkul("Cyber Ops", "Cops", "C", "P 502", "Andreas", 27, 6, 2, 3),
-    Matkul("Sistem Operasi", "SO", "A", "P 502", "Rudi", 2, 4, 3, 3),
-    Matkul("Sistem Operasi", "SO", "C", "P 502", "Rudi", 76, 3, 3, 3),
-    Matkul("Sistem Operasi", "SO", "B", "P 502", "Rudi", 141, 3, 3, 3),
-    Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 2, 6, 5, 3),
-    Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 12, 6, 5, 3),
-    Matkul("Analisa Desain Sistem Informasi", "ADSI", "C", "P 502", "Lily", 12, 6, 7, 3),
-    Matkul("Analisa Desain Sistem Informasi", "ADSI", "D", "P 502", "Lily", 60, 6, 7, 3),
-    Matkul("Analisa Desain Sistem Informasi", "ADSI", "B", "P 502", "Lily", 66, 6, 7, 3),
-    Matkul("Analisa Desain Sistem Informasi", "ADSI", "A", "P 502", "Lily", 93, 6, 7, 3),
-    Matkul("Komunikasi Interpersonal", "Komal", "B", "P 502", "Stephanus", 12, 6, 7, 3),
-    Matkul("Komunikasi Interpersonal", "Komal", "A", "P 502", "Stephanus", 41, 6, 7, 3),
-    Matkul("Komunikasi Interpersonal", "Komal", "C", "P 502", "Stephanus", 40, 6, 7, 3),
-    Matkul("Komunikasi Interpersonal", "Komal", "D", "P 502", "Stephanus", 92, 6, 7, 3),
-    Matkul("Kecerdasan Buatan", "KB", "C", "P 502", "Alvin", 35, 6, 4, 3),
-    Matkul("Kecerdasan Buatan", "KB", "B", "P 502", "Alvin", 66, 6, 4, 3),
-    Matkul("Kecerdasan Buatan", "KB", "A", "P 502", "Alvin", 35, 6, 4, 3),
-    Matkul("Interaksi Manusia Komputer", "IMK", "C", "P 502", "Adi", 54, 6, 6, 3),
-    Matkul("Interaksi Manusia Komputer", "IMK", "A", "P 502", "Adi", 72, 6, 6, 3),
-    Matkul("Interaksi Manusia Komputer", "IMK", "B", "P 502", "Adi", 108, 6, 6, 3),
-    Matkul("Metode Numerik", "Metnum", "A", "P 502", "Stephanus", 60, 4, 7, 3),
-    Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 7, 3),
-    Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 7, 3),
-    Matkul("Statistika Terapan", "ST", "A", "P 502", "Stephanus", 81, 6, 5, 3),
-    Matkul("Data Mining", "Datmin", "A", "P 502", "Stephanus", 87, 6, 8, 3),
-    Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Stephanus", 93, 6, 7, 3),
+    # Matkul("Sistem Operasi", "SO", "A", "P 502", "Rudi", 2, 4, 6, 3),
+    Matkul("Sistem Operasi", "SO", "C", "P 502", "Rudi", 76, 3, 6, 3),
+    Matkul("Sistem Operasi", "SO", "B", "P 502", "Rudi", 141, 3, 6, 3),
+    Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 2, 6, 10, 3),
+    Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 12, 6, 10, 3),
+    Matkul("Analisa Desain Sistem Informasi", "ADSI", "C", "P 502", "Lily", 12, 6, 14, 3),
+    Matkul("Analisa Desain Sistem Informasi", "ADSI", "D", "P 502", "Lily", 60, 6, 14, 3),
+    Matkul("Analisa Desain Sistem Informasi", "ADSI", "B", "P 502", "Lily", 66, 6, 14, 3),
+    Matkul("Analisa Desain Sistem Informasi", "ADSI", "A", "P 502", "Lily", 93, 6, 14, 3),
+    Matkul("Komunikasi Interpersonal", "Komal", "B", "P 502", "Stephanus", 12, 6, 18, 3),
+    Matkul("Komunikasi Interpersonal", "Komal", "A", "P 502", "Stephanus", 41, 6, 18, 3),
+    Matkul("Komunikasi Interpersonal", "Komal", "C", "P 502", "Stephanus", 40, 6, 18, 3),
+    Matkul("Komunikasi Interpersonal", "Komal", "D", "P 502", "Stephanus", 92, 6, 18, 3),
+    Matkul("Kecerdasan Buatan", "KB", "C", "P 502", "Alvin", 35, 6, 22, 3),
+    Matkul("Kecerdasan Buatan", "KB", "B", "P 502", "Alvin", 66, 6, 22, 3),
+    # Matkul("Kecerdasan Buatan", "KB", "A", "P 502", "Alvin", 35, 6, 22, 3),
+    Matkul("Interaksi Manusia Komputer", "IMK", "C", "P 502", "Adi", 54, 6, 26, 3),
+    Matkul("Interaksi Manusia Komputer", "IMK", "A", "P 502", "Adi", 72, 6, 26, 3),
+    Matkul("Interaksi Manusia Komputer", "IMK", "B", "P 502", "Adi", 108, 6, 26, 3),
+    # Matkul("Metode Numerik", "Metnum", "A", "P 502", "Stephanus", 60, 4, 30, 3),
+    Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 30, 3),
+    # Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 30, 3),
+    Matkul("Statistika Terapan", "ST", "A", "P 502", "Stephanus", 81, 6, 34, 3),
+    Matkul("Data Mining", "Datmin", "A", "P 502", "Stephanus", 87, 6, 38, 3),
+    Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Stephanus", 93, 6, 42, 3),
 ]
 
 best = []
@@ -270,3 +270,4 @@ states = []
 states = generateStates(listMat, 24)
 best = findBest(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], [], [], [])
 print(best)
+
