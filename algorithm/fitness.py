@@ -34,7 +34,7 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
                         fitness -= 2000
                 else:
                     continue
-            print('cek Collision : ',i,fitness)
+            # print('cek Collision : ',i,fitness)
             # cek jumlah sks
             countSks+=listMat[i].sks
             
@@ -49,14 +49,14 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
             # algo cek matkul fav
             if listMat[i].nama in matkulFav:
                 fitness += 80
-    print(countJam)
+    # print(countJam)
     # perhitungan fitness
     fitness += cekSks(countSks,minSks,maksSks) # cek SKS
-    print('cekSKs : ',fitness)
+    # print('cekSKs : ',fitness)
     fitness += cekJam(countJam,maksJam) # cek Jumlah Jam
-    print('cekJam : ',fitness)
+    # print('cekJam : ',fitness)
     fitness += cekHari(countJam,hariMasuk) # cek hari masuk
-    print('cekHari : ',fitness)
+    # print('cekHari : ',fitness)
     fitness += cekKembar(active) # cek kembar
     return fitness
 
@@ -114,5 +114,5 @@ listMat = [Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",15
     Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",88,4,12,2),
     Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",66,6,12,3),
     Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",10,6,12,3)]
-print(fit)
-print('Fitness:',cekFitness(fit,listMat))
+# print(fit)
+# print('Fitness:',cekFitness(fit,listMat))

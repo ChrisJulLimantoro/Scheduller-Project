@@ -2,9 +2,14 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import *
+
+from algorithm.matkul import *
+
+
 # initiate app (flask based)
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = getSQLAlchemyURI()
+
 
 # initiate database connection (using sqlachemy)
 db = SQLAlchemy(app)
@@ -15,7 +20,12 @@ migrate = Migrate(app,db)
 # routing and semi-controller
 @app.route("/")
 def testing():
-    return "<h1>hallo ngabb!</h1>"
+    return render_template('index.html');
+
+@app.route("/test/",methods = ["POST"])
+def api_test():
+    data = json.loads(request.data)
+    return convertIntToJadwal(int(data['jadwal']),int(data['lama']))
 
 
 # Model untuk DB & migration
