@@ -1,15 +1,40 @@
 from matkul import Matkul
+import numpy as np 
 import random
 
 def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk:list=[1,1,1,1,1,1],maksJam:list=[20,20,20,20,20,20],dosenFav:list=[],matkulFav:list=[]) -> int:
     countSks = 0
     countJam = [0,0,0,0,0,0]
     fitness = 0
+    active=[]
     # algo
     for i in range(state.__len__()):
         if state[i] == 0:
             continue
         else :
+            # array kelas
+            active.append(listMat[i].singkatan)
+            
+            # cek Collision jadwal kelas
+            for j in range(i+1,state.__len__()):
+                if state[j] == 1:
+                    if listMat[j].jadwalKelas >= listMat[i].jadwalKelas and listMat[j].jadwalKelas < (listMat[i].jadwalKelas + listMat[i].lamaKelas):
+                        fitness -= 10000
+                    elif listMat[i].jadwalKelas >= listMat[j].jadwalKelas and listMat[i].jadwalKelas < (listMat[j].jadwalKelas + listMat[j].lamaKelas):
+                        fitness -= 10000
+                else:
+                    continue
+            
+            # cek Collision jadwal ujian
+            for j in range(i+1,state.__len__()):
+                if state[j] == 1:
+                    if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
+                        fitness -= 2000
+                    elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
+                        fitness -= 2000
+                else:
+                    continue
+            print('cek Collision : ',i,fitness)
             # cek jumlah sks
             countSks+=listMat[i].sks
             
@@ -27,12 +52,22 @@ def cekFitness(state:list,listMatkul:list,minSks:int=15,maksSks:int=24,hariMasuk
     print(countJam)
     # perhitungan fitness
     fitness += cekSks(countSks,minSks,maksSks) # cek SKS
-    print(fitness)
+    print('cekSKs : ',fitness)
     fitness += cekJam(countJam,maksJam) # cek Jumlah Jam
-    print(fitness)
+    print('cekJam : ',fitness)
     fitness += cekHari(countJam,hariMasuk) # cek hari masuk
-    print(fitness)
+    print('cekHari : ',fitness)
+    fitness += cekKembar(active) # cek kembar
     return fitness
+
+# function u/ cek kembar
+def cekKembar(active:list) -> int:
+    result = 0
+    a,b = np.unique(active,return_counts=True)
+    for i in b:
+        if i>1:
+            result -= 50000*(i-1)
+    return result
 
 # function u/ cek fitness SKS
 def cekSks(count:int,minSks:int,maksSks:int) -> int:
@@ -65,8 +100,8 @@ def cekHari(count:list,hariMasuk:list) -> int:
         
 
 
-# fit = [random.randint(0,1) for i in range(12)]
-fit = [0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0]      
+fit = [random.randint(0,1) for i in range(12)]
+# fit = [0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0]      
 listMat = [Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",15,6,12,3),
     Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",30,6,12,3),
     Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",4,6,12,3),
