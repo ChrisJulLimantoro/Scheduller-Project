@@ -38,6 +38,7 @@ def cekFitness(state:list,listMat:list,minSks:int=15,maksSks:int=24,hariMasuk:li
     # print(countJam)
     # perhitungan fitness
     fitness += cekCollision(state, listMat)
+    # print('cekCollission : ',fitness)
     fitness += cekSks(countSks,minSks,maksSks) # cek SKS
     # print('cekSKs : ',fitness)
     fitness += cekJam(countJam,maksJam) # cek Jumlah Jam
@@ -45,26 +46,28 @@ def cekFitness(state:list,listMat:list,minSks:int=15,maksSks:int=24,hariMasuk:li
     fitness += cekHari(countJam,hariMasuk) # cek hari masuk
     # print('cekHari : ',fitness)
     fitness += cekKembar(active) # cek kembar
+    # print('cekKembar : ',fitness)
     return fitness
 
 def cekCollision(state:list, listMat:list) -> int:
     result = 0
     for i in range(len(state)):
+        if state[i] == 1:
         # cek Collision jadwal kelas
-        for j in range(i+1,state.__len__()):
-            if state[j] == 1:
-                if listMat[j].jadwalKelas >= listMat[i].jadwalKelas and listMat[j].jadwalKelas < (listMat[i].jadwalKelas + listMat[i].lamaKelas):
-                    result -= 10000
-                elif listMat[i].jadwalKelas >= listMat[j].jadwalKelas and listMat[i].jadwalKelas < (listMat[j].jadwalKelas + listMat[j].lamaKelas):
-                    result -= 10000
+            for j in range(i+1,state.__len__()):
+                if state[j] == 1:
+                    if listMat[j].jadwalKelas >= listMat[i].jadwalKelas and listMat[j].jadwalKelas < (listMat[i].jadwalKelas + listMat[i].lamaKelas):
+                        result -= 10000
+                    elif listMat[i].jadwalKelas >= listMat[j].jadwalKelas and listMat[i].jadwalKelas < (listMat[j].jadwalKelas + listMat[j].lamaKelas):
+                        result -= 10000
 
-        # cek Collision jadwal ujian
-        for j in range(i+1,state.__len__()):
-            if state[j] == 1:
-                if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
-                    result -= 2000
-                elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
-                    result -= 2000
+            # cek Collision jadwal ujian
+            for j in range(i+1,state.__len__()):
+                if state[j] == 1:
+                    if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
+                        result -= 2000
+                    elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
+                        result -= 2000
 
     return result
 
@@ -107,22 +110,3 @@ def cekHari(count:list,hariMasuk:list) -> int:
         elif count[i] >= 0 and hariMasuk[i] == 1:
             result += 2
     return result
-        
-
-
-fit = [random.randint(0,1) for i in range(12)]
-# fit = [0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0]      
-listMat = [Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",15,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",30,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",4,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",45,4,12,2),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",13,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",33,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",60,4,12,2),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",88,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",105,4,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",88,4,12,2),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",66,6,12,3),
-    Matkul("Analisis Proses Bisnis","APB","A","P 502","Krisna Wahyudi",10,6,12,3)]
-# print(fit)
-# print('Fitness:',cekFitness(fit,listMat))

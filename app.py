@@ -25,6 +25,7 @@ def testing():
 @app.route("/test/",methods = ["POST"])
 def api_test():
     data = json.loads(request.data)
+    
     return convertIntToJadwal(int(data['jadwal']),int(data['lama']))
 
 
