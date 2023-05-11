@@ -1,26 +1,25 @@
 from fitness import *
 import random
+from timeit import default_timer as timer
 # import numpy as np
 
 # generate random states
 def generateStates(listMatkul:list, maksSks:int) -> list:
     states = []
     titikAwal = int(maksSks / 3)
-    for i in range(50):
+    for i in range(100):
         state = np.array([1 for i in range(titikAwal)])
         state = np.append(state, [0 for i in range(listMatkul.__len__() - titikAwal)])
         np.random.shuffle(state)
         states.append(state)
-    # print(states)
     return states
-    # return [[random.randint(0, 1) for i in range(len(listMatkul))] for j in range(50)]
 
 # find best fitness among all states
 def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list) -> None:
     count = 0
     global states
 
-    while(count <= 200):
+    while(count < 200):
         fitness = []
         # itung fitness dari tiap states
         for i in range(states.__len__()):
@@ -52,7 +51,7 @@ def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:l
                     best = sorted(best, key = lambda x : x[1])
 
         newStates = []
-        print(best)
+        # print(best)
 
         for i in range(len(states)):
             p1 = randomSelectBest(best)
@@ -100,15 +99,8 @@ def cekStateKembar(state1, state2, fitness) -> bool:
 
 def crossover(p1:list, p2:list) -> list:
     result = []
-    # titikPotong = random.randint(1, p1.__len__())
-    # result = [0 for i in range(p1.__len__())]
-    # for i in range(result.__len__()):
-    #     if i < int(p1.__len__()/titikPotong):
-    #         result[i] = p1[i]
-    #     else:
-    #         result[i] = p2[i]
-    # return result
     randoman = random.random()
+
     if(randoman <= 0.167):
         result = algoCross1(p1,p2)
     elif(randoman <= 0.334):
@@ -136,7 +128,6 @@ def algoCross1(p1:list,p2:list):
     return result
 
 def algoCross2(p1:list,p2:list):
-    # print(p2)
     # crossover 3 titik
     titikPotong1 = random.randint(1,p1.__len__()-1)
     titikPotong2 = random.randint(1,p1.__len__()-1)
@@ -174,18 +165,28 @@ def algoCross3(p1:list,p2:list):
     return result
 
 def mutate(gene:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list):
-    # semi random mutate tidak merubah jumlah angka 1 yang digunakan karena ingin mempertahankan best
+    randomNum = random.random()
     score = cekFitness(gene, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
+    # bitFlipMutation(gene, score)
+    if randomNum <= 0.33:
+        bitFlipMutation(gene, score)
+    elif randomNum <= 0.67:
+        invertMutation(gene, score)
+    else:
+        swapMutation(gene, score)
+
+def bitFlipMutation(gene:list, fitness:int):
+    # semi random mutate tidak merubah jumlah angka 1 yang digunakan karena ingin mempertahankan best
     mutator = []
-    if score < -10000:
-        for i in range(1+ ((int)(abs(score)/10000))):
+    if fitness < -10000:
+        for i in range(1+ ((int)(abs(fitness)/10000))):
             mutator.append(random.randint(0,gene.__len__()-1))
-    elif score < 0:
-        for i in range(1+ ((int)(abs(score)/1000))):
+    elif fitness < 0:
+        for i in range(1+ ((int)(abs(fitness)/1000))):
             mutator.append(random.randint(0,gene.__len__()-1))
     else:
         mutator.append(random.randint(0,gene.__len__()-1))
-    # print(mutator)
+
     for i in range(gene.__len__()):
         # mutasi berdasarkan fitness jika fitness jelek lebih banyak bit yg di flip
         if i in mutator:
@@ -193,7 +194,28 @@ def mutate(gene:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, 
                 gene[i] = 1
             else:
                 gene[i] = 0
-    
+
+def invertMutation(gene:list, fitness:int):
+    start = random.randint(0, gene.__len__() - 1)
+    end = random.randint(start, gene.__len__())
+
+    gene[start:end] = gene[start:end][::-1]
+
+def swapMutation(gene:list, fitness:int):
+    numOfSwaps = 0
+
+    if fitness < -10000:
+        numOfSwaps = random.randint(1, 2 + int(abs(fitness)/1000))
+    elif fitness < 0:
+        numOfSwaps = random.randint(1, 2 + int(abs(fitness)/10000))
+
+    for i in range(numOfSwaps):
+        x = random.randint(0, gene.__len__() - 1)
+        y = random.randint(0, gene.__len__() - 1)
+        while x == y:
+            y = random.randint(0, gene.__len__() - 1)
+        
+        gene[x], gene[y] = gene[y], gene[x]
 
 def randomSelect(fitness:list) -> int:
     total = 0
@@ -221,11 +243,6 @@ def randomSelect(fitness:list) -> int:
 def randomSelectBest(best:list) -> int:
     total = 0
     minimum = min(np.array(best, dtype=object)[0::,1])
-    # print(best)
-    # print(minimum)
-    # for i in range(best.__len__()):
-    #     if best[i][1] <= minimum:
-    #         minimum = best[i][1]
     
     for i in best:
         if minimum < 0:
@@ -253,6 +270,7 @@ def randomSelectBest(best:list) -> int:
 # Jumat = 108
 # Sabtu = 135 
 # [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1]
+# [0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1]
 listMat = [
     Matkul("Cyber Ops", "Cops", "B", "P 502", "Andreas", 0, 6, 2, 3),
     Matkul("Cyber Ops", "Cops", "A", "P 502", "Leo", 27, 6, 2, 3),
@@ -276,17 +294,20 @@ listMat = [
     Matkul("Interaksi Manusia Komputer", "IMK", "C", "P 502", "Adi", 54, 6, 26, 3),
     Matkul("Interaksi Manusia Komputer", "IMK", "A", "P 502", "Andreas", 72, 6, 26, 3),
     Matkul("Interaksi Manusia Komputer", "IMK", "B", "P 502", "Krisna", 108, 6, 26, 3),
-    Matkul("Metode Numerik", "Metnum", "A", "P 502", "Leo", 60, 4, 30, 3),
-    Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 30, 3),
-    Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 30, 3),
+    Matkul("Metode Numerik", "Metnum", "A", "P 502", "Leo", 60, 4, 30, 2),
+    Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 30, 2),
+    Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 30, 2),
     Matkul("Statistika Terapan", "ST", "A", "P 502", "Stephanus", 81, 6, 34, 3),
     Matkul("Data Mining", "Datmin", "A", "P 502", "Stephanus", 87, 6, 38, 3),
     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 42, 3),
 ]
-# np.random.shuffle(np.array(listMat))
+
+start = timer()
 best = []
 states = []
 states = generateStates(listMat, 24)
 best = findBest(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
+end = timer()
+print('Time:', (end - start))
 print(best)
 
