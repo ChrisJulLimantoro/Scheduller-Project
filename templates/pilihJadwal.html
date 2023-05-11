@@ -40,7 +40,7 @@
           <div class="inputContent pt-4 bg-success p-3 rounded-bottom shadow text-white">
             <!-- Jumlah SKS -->
             <label for="">Jumlah SKS</label>
-            <div class="input-group mt-2 my-3">
+            <div class="input-group mt-2 mb-3">
               <input type="text" aria-label="sksAwal" class="form-control rounded">
               <p class="mx-3 my-auto"> - </p>
               <input type="text" aria-label="sksAkhir" class="form-control rounded">
@@ -48,7 +48,7 @@
 
             <!-- Jumlah Jam per hari  -->
             <label for="">Jumlah Jam per Hari</label>
-            <div class="input-group mt-2 my-3">
+            <div class="input-group mt-2 mb-3">
               <input type="text" aria-label="jamMulai" class="form-control rounded">
               <p class="mx-3 my-auto"> - </p>
               <input type="text" aria-label="jamSelesai" class="form-control rounded">
@@ -56,7 +56,7 @@
 
             <!-- Jumlah Hari per Minggu  -->
             <label for="">Jumlah Hari per Minggu</label>
-            <div class="input-group mt-2 my-3">
+            <div class="input-group mt-2 mb-3">
               <input type="text" aria-label="hariMulai" class="form-control rounded">
               <p class="mx-3 my-auto"> - </p>
               <input type="text" aria-label="hariSelesai" class="form-control rounded">
@@ -64,38 +64,42 @@
 
             <!-- Dosen yang Diinginkan  -->
             <label for="">Dosen yang Diinginkan</label>
-            <div class="input-group mt-2 my-3">
+            <select class="form-select mt-2 mb-3" multiple aria-label="multiple select example">
+              <option selected>Kent Maynard</option>
+              <option value="1">Darrel</option>
+              <option value="2">Samuel Sutjipto</option>
+              <option value="3">Christofer Oka</option>
+            </select>
+            <!-- <div class="input-group mt-2 my-3">
               <input type="text" aria-label="inpDosen1" class="form-control rounded">
               <p class="mx-3 my-auto"> - </p>
               <input type="text" aria-label="inpDosen2" class="form-control rounded">
-            </div>
+            </div> -->
 
             <!-- Dosen yang Dihindari  -->
             <label for="">Dosen yang Dihindari</label>
-            <div class="input-group mt-2 my-3">
+            <select class="form-select mt-2 mb-3" multiple aria-label="multiple select example">
+              <option selected>Kent Maynard</option>
+              <option value="1">Darrel</option>
+              <option value="2">Samuel Sutjipto</option>
+              <option value="3">Christofer Oka</option>
+            </select>
+            <!-- <div class="input-group mt-2 my-3">
               <input type="text" aria-label="dosenDihindari1" class="form-control rounded">
               <p class="mx-3 my-auto"> - </p>
               <input type="text" aria-label="dosenDihindari2" class="form-control rounded">
-            </div>
-
+            </div> -->
           </div>
-      
+          
         </div>
         <!-- close filter -->
 
         <!-- table section -->
         <div class="col-lg-9 m-3 shadow rounded"> 
 
-          <!-- button -->
-          <div class="row mt-5">
-            <!-- Pilih Mata Kuliah -->
-            <div class="col-md-3 ms-md-5">
-              <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
-            </div>
-            <!-- Upload mata kuliah -->
-            <div class="col">
-              <button type="button" class="btn btn-outline-success"><i class="fa-solid fa-upload"></i> Upload Mata Kuliah</button>
-            </div>
+          <div class="d-flex gap-3 ms-4 mt-4">
+            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
+            <button type="button" class="btn btn-outline-success"><i class="fa-solid fa-upload"></i> Upload Mata Kuliah</button>
           </div>
 
           <!-- table -->
