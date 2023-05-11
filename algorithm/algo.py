@@ -55,7 +55,7 @@ def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:l
         print(best)
 
         for i in range(len(states)):
-            p1 = best.__len__()-1
+            p1 = randomSelectBest(best)
             p2 = randomSelect(fitness)
 
             child = crossover(best[p1][0], states[p2])
