@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- dataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+    <style>
+      /* #outerDiv{
+        background-image: url("https://s3-alpha-sig.figma.com/img/cc7a/41f0/674a2691ea6854b730620160f69cf8b4?Expires=1684713600&Signature=kuXVnADQKBoOO5jIHxNzunp9Z9WuPMAaNbU1OfG29lOOORrGQ2mn2icZlK1ue40PXl16ZZU3IJ2MsovkabT3ou52QldPCyV0KJFBUoZhwxHCtGiRF6AYXAnAEhLhQVAC~o3WPVC6OgKT-dniqXArAamK8lwgAvZm35BAVnkBl9zBcVOQUDrNSGOsdV-RhAhZkszNjFjhb2nIlvdQQp305mQkQ2kpX9EKvUPd7NE9Ho8UHH82oo54OVypLq~Wok8urZC3ONdM4pOhXDwiw200NMxchZWjakHiIfxt0iT4ZRxX5QRj3CKFK6aJY-xFzRXzN6iOW1C4kyxRwaYXsh9fdA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+        background-repeat: no-repeat;
+        background-position: bottom 1200%;
+
+      } */
+    </style>
+
+  </head>
+  <body>
+    <!-- outer div -->
+    <div id="outerDiv">
+      <h1 class="m-5">Pilih Jadwal Anda</h1>
+
+      <!-- inner div -->
+      <div class="row">
+
+        <!-- Bagian Filter -->
+        <div class="col-lg-2 m-3 mx-auto" style="max-width: 500px;">
+
+          <div class="headerInput rounded-top bg-success text-success shadow p-3" style="--bs-bg-opacity: 0.25;">
+            <h5 class="my-auto">FILTER YANG DIINGINKAN</h5>
+          </div>
+
+          <div class="inputContent pt-4 bg-success p-3 rounded-bottom shadow text-white">
+            <!-- Jumlah SKS -->
+            <label for="">Jumlah SKS</label>
+            <div class="input-group mt-2 my-3">
+              <input type="text" aria-label="sksAwal" class="form-control rounded">
+              <p class="mx-3 my-auto"> - </p>
+              <input type="text" aria-label="sksAkhir" class="form-control rounded">
+            </div>
+
+            <!-- Jumlah Jam per hari  -->
+            <label for="">Jumlah Jam per Hari</label>
+            <div class="input-group mt-2 my-3">
+              <input type="text" aria-label="jamMulai" class="form-control rounded">
+              <p class="mx-3 my-auto"> - </p>
+              <input type="text" aria-label="jamSelesai" class="form-control rounded">
+            </div>
+
+            <!-- Jumlah Hari per Minggu  -->
+            <label for="">Jumlah Hari per Minggu</label>
+            <div class="input-group mt-2 my-3">
+              <input type="text" aria-label="hariMulai" class="form-control rounded">
+              <p class="mx-3 my-auto"> - </p>
+              <input type="text" aria-label="hariSelesai" class="form-control rounded">
+            </div>
+
+            <!-- Dosen yang Diinginkan  -->
+            <label for="">Dosen yang Diinginkan</label>
+            <div class="input-group mt-2 my-3">
+              <input type="text" aria-label="inpDosen1" class="form-control rounded">
+              <p class="mx-3 my-auto"> - </p>
+              <input type="text" aria-label="inpDosen2" class="form-control rounded">
+            </div>
+
+            <!-- Dosen yang Dihindari  -->
+            <label for="">Dosen yang Dihindari</label>
+            <div class="input-group mt-2 my-3">
+              <input type="text" aria-label="dosenDihindari1" class="form-control rounded">
+              <p class="mx-3 my-auto"> - </p>
+              <input type="text" aria-label="dosenDihindari2" class="form-control rounded">
+            </div>
+
+          </div>
+      
+        </div>
+        <!-- close filter -->
+
+        <!-- table section -->
+        <div class="col-lg-9 m-3 shadow rounded"> 
+
+          <!-- button -->
+          <div class="row mt-5">
+            <!-- Pilih Mata Kuliah -->
+            <div class="col-md-3 ms-md-5">
+              <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
+            </div>
+            <!-- Upload mata kuliah -->
+            <div class="col">
+              <button type="button" class="btn btn-outline-success"><i class="fa-solid fa-upload"></i> Upload Mata Kuliah</button>
+            </div>
+          </div>
+
+          <!-- table -->
+          <div class="mt-4 mt-5">
+            <table class="table table-striped text-center" id="myTable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nama Mata Kuliah</th>
+                  <th scope="col">Nama Dosen</th>
+                  <th scope="col">Kelas Paralel</th>
+                  <th scope="col">SKS</th>
+                  <th scope="col">Hari</th>
+                  <th scope="col">Jadwal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <th scope="row">Statistika Terapan</th>
+                  <td>Kent Maynard</td>
+                  <td>A</td>
+                  <td>3</td>
+                  <td>Kamis</td>
+                  <td>07.30-10.30</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <th scope="row">Matematika Diskrit</th>
+                  <td>Kent Maynard</td>
+                  <td>A</td>
+                  <td>3</td>
+                  <td>Kamis</td>
+                  <td>07.30-10.30</td>
+                </tr> 
+                <tr>
+                  <th scope="row">3</th>
+                  <th scope="row">Statistika Dasar</th>
+                  <td>Kent Maynard</td>
+                  <td>A</td>
+                  <td>3</td>
+                  <td>Kamis</td>
+                  <td>07.30-10.30</td>
+                </tr> 
+                <tr>
+                  <th scope="row">4</th>
+                  <th scope="row">Statistika Lanjutan</th>
+                  <td>Kent Maynard</td>
+                  <td>A</td>
+                  <td>3</td>
+                  <td>Kamis</td>
+                  <td>07.30-10.30</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <th scope="row">Statistika Bisnis</th>
+                  <td>Kent Maynard</td>
+                  <td>A</td>
+                  <td>3</td>
+                  <td>Kamis</td>
+                  <td>07.30-10.30</td>
+                </tr>
+              </tbody>
+            </table>  
+          </div>
+          <!-- close table div -->
+
+          <button type="button" class="btn btn-warning my-3 ms-3">Generate</button>
+
+        </div>
+        <!-- close table section -->
+
+      </div>
+      <!-- close inner div -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+  $('#myTable').DataTable( {
+    responsive: true
+  } );
+</script>
