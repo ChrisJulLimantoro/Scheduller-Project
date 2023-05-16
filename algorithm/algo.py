@@ -7,7 +7,7 @@ from timeit import default_timer as timer
 def generateStates(listMatkul:list, maksSks:int) -> list:
     states = []
     titikAwal = int(maksSks / 3)
-    for i in range(100):
+    for i in range(80):
         state = np.array([1 for i in range(titikAwal)])
         state = np.append(state, [0 for i in range(listMatkul.__len__() - titikAwal)])
         np.random.shuffle(state)
@@ -62,7 +62,9 @@ def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:l
             percentage = 0.002
             # print(child)
             if scoreChild <= 0:
-                percentage = 0.02 * abs(scoreChild)/1000
+                percentage = percentage * abs(scoreChild)/1000
+            # else :
+            #     percentage = percentage * abs(scoreChild)/100
             if (random.random() <= percentage):
                 # print('Before mutation:', child)
                 mutate(child, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
