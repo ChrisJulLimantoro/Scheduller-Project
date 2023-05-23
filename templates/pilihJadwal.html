@@ -19,6 +19,54 @@
       $(".generateButton").click(function () {
         $(".loader").show().delay(2000).fadeOut();
         $(".boxHasil").hide().delay(2000).fadeIn();
+      });
+
+      $("#senin").click(function () {
+        if ($("#senin").is(":checked")) {
+          $(".jamSenin").css("display", "block");
+        } else {
+          $(".jamSenin").css("display", "none");
+        }
+      })
+
+      $("#selasa").click(function () {
+        if ($("#selasa").is(":checked")) {
+          $(".jamSelasa").css("display", "block");
+        } else {
+          $(".jamSelasa").css("display", "none");
+        }
+      })
+
+      $("#rabu").click(function () {
+        if ($("#rabu").is(":checked")) {
+          $(".jamRabu").css("display", "block");
+        } else {
+          $(".jamRabu").css("display", "none");
+        }
+      })
+
+      $("#kamis").click(function () {
+        if ($("#kamis").is(":checked")) {
+          $(".jamKamis").css("display", "block");
+        } else {
+          $(".jamKamis").css("display", "none");
+        }
+      })
+
+      $("#jumat").click(function () {
+        if ($("#jumat").is(":checked")) {
+          $(".jamJumat").css("display", "block");
+        } else {
+          $(".jamJumat").css("display", "none");
+        }
+      })
+
+      $("#sabtu").click(function () {
+        if ($("#sabtu").is(":checked")) {
+          $(".jamSabtu").css("display", "block");
+        } else {
+          $(".jamSabtu").css("display", "none");
+        }
       })
     })
   </script>
@@ -82,6 +130,14 @@
     #uploadLabel:hover {
       cursor: pointer;
     }
+
+    .inputJam {
+      width: 3em;
+    }
+
+    .jamHari {
+      display: none;
+    }
   </style>
 
 </head>
@@ -105,25 +161,104 @@
           <!-- Jumlah SKS -->
           <label for="">Jumlah SKS</label>
           <div class="input-group mt-2 mb-3">
-            <input type="text" aria-label="sksAwal" class="form-control rounded">
+            <input type="text" aria-label="sksAwal" class="form-control rounded" placeholder="Min">
             <p class="mx-3 my-auto"> - </p>
-            <input type="text" aria-label="sksAkhir" class="form-control rounded">
+            <input type="text" aria-label="sksAkhir" class="form-control rounded" placeholder="Max">
           </div>
 
           <!-- Jumlah Jam per hari  -->
-          <label for="">Jumlah Jam per Hari</label>
+          <!-- <label for="">Jumlah Jam per Hari</label>
           <div class="input-group mt-2 mb-3">
             <input type="text" aria-label="jamMulai" class="form-control rounded">
             <p class="mx-3 my-auto"> - </p>
             <input type="text" aria-label="jamSelesai" class="form-control rounded">
+          </div> -->
+
+          <!-- Hari Masuk  -->
+          <label for="">Hari Masuk</label>
+          <div class="multipleSelection mt-2 mb-3">
+            <div class="selectBox" onclick="showCheckBoxHari()">
+              <select class="form-select">
+                <option>Pilih Hari...</option>
+              </select>
+              <div class="overSelect"></div>
+            </div>
+            <div id="checkBoxHari" class="checkBox bg-white text-dark rounded px-3 my-3 py-2">
+              <label for="senin">
+                <input type="checkbox" class="inputHari form-check-input" id="senin" />
+                Senin
+              </label>
+              <label for="selasa">
+                <input type="checkbox" class="inputHari form-check-input" id="selasa" />
+                Selasa
+              </label>
+              <label for="rabu">
+                <input type="checkbox" class="inputHari form-check-input" id="rabu" />
+                Rabu
+              </label>
+              <label for="kamis">
+                <input type="checkbox" class="inputHari form-check-input" id="kamis" />
+                Kamis
+              </label>
+              <label for="jumat">
+                <input type="checkbox" class="inputHari form-check-input" id="jumat" />
+                Jumat
+              </label>
+              <label for="sabtu">
+                <input type="checkbox" class="inputHari form-check-input" id="sabtu" />
+                Sabtu
+              </label>
+            </div>
           </div>
 
-          <!-- Jumlah Hari per Minggu  -->
-          <label for="">Jumlah Hari per Minggu</label>
-          <div class="input-group mt-2 mb-3">
-            <input type="text" aria-label="hariMulai" class="form-control rounded">
-            <p class="mx-3 my-auto"> - </p>
-            <input type="text" aria-label="hariSelesai" class="form-control rounded">
+          <!-- JAM PER HARI -->
+          <h6>MAKS. JAM PER HARI</h6>
+          <!-- SENIN -->
+          <div class="row jamHari jamSenin">
+            <label for="jamSenin" class="col-sm-6 col-form-label">Senin</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamSenin">
+            </div>
+          </div>
+
+          <!-- SELASA -->
+          <div class="row mt-1 jamHari jamSelasa">
+            <label for="jamSelasa" class="col-sm-6 col-form-label">Selasa</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamSelasa">
+            </div>
+          </div>
+
+          <!-- RABU -->
+          <div class="row mt-1 jamHari jamRabu">
+            <label for="jamRabu" class="col-sm-6 col-form-label">Rabu</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamRabu">
+            </div>
+          </div>
+
+          <!-- KAMIS -->
+          <div class="row mt-1 jamHari jamKamis">
+            <label for="jamKamis" class="col-sm-6 col-form-label">Kamis</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamKamis">
+            </div>
+          </div>
+
+          <!-- JUMAT -->
+          <div class="row mt-1 jamHari jamJumat">
+            <label for="jamJumat" class="col-sm-6 col-form-label">Jumat</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamJumat">
+            </div>
+          </div>
+
+          <!-- SABTU -->
+          <div class="row mt-1 jamHari jamSabtu">
+            <label for="jamSabtu" class="col-sm-6 col-form-label">Sabtu</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="jamSabtu">
+            </div>
           </div>
 
           <!-- Dosen yang Diinginkan  -->
@@ -295,8 +430,8 @@
 
       <!-- table hasil 1 -->
       <div class="row">
-        <div class="col-3"></div>
-        <div class="mt-4 mt-5 col-9 boxHasil">
+        <div class="col-md-3 col-1"></div>
+        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Pertama</h2>
           <br>
           <table class="table table-striped text-center" id="table1" style="margin-top: 1em;">
@@ -394,6 +529,18 @@
       show = false;
     } else {
       checkBoxDosen.style.display = "none";
+      show = true;
+    }
+  }
+
+  function showCheckBoxHari() {
+    var checkBoxHari = document.getElementById("checkBoxHari");
+
+    if (show) {
+      checkBoxHari.style.display = "block";
+      show = false;
+    } else {
+      checkBoxHari.style.display = "none";
       show = true;
     }
   }
