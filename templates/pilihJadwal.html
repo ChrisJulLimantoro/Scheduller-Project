@@ -829,7 +829,7 @@
 
         <div class="shadow rounded p-3 me-3">
           <div class="d-flex gap-3 ms-4 mt-4">
-            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
             <input type="file" id="upload"
               accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
             <button type="button" class="btn btn-outline-success uploadButton"><label for="upload" id="uploadLabel"><i
@@ -1171,6 +1171,94 @@
   </div>
   <!-- close inner div -->
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Input Mata Kuliah</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-center mt-3">
+            <h3>Mata Kuliah</h2>
+          </div>
+          <!-- Nama Mata Kuliah -->
+          <label for="" class="">Nama Mata Kuliah</label>
+          <input type="text" aria-label="namaMataKuliah" class="form-control rounded mt-2" placeholder="Nama Mata Kuliah">
+          <!-- Nama Dosen -->
+          <label for="" class="mt-4">Nama Dosen</label>
+          <input type="text" aria-label="namaDosen" class="form-control rounded mt-2" placeholder="Nama Dosen">
+          <!-- Kelas Paralel -->
+          <label for="" class="mt-4">Kelas Paralel</label>
+          <input type="text" aria-label="kelasParalel" class="form-control rounded mt-2" placeholder="Kelas Paralel">
+          <!-- Jumlah SKS -->
+          <label for="" class="mt-4">Jumlah SKS</label>
+          <input type="text" aria-label="jumlahSKS" class="form-control rounded mt-2" placeholder="Jumlah SKS">
+          <!-- Hari -->
+          <label for="" class="mt-4">Hari Mata Kuliah</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>Senin</option>
+              <option value="2">Selasa</option>
+              <option value="3">Rabu</option>
+              <option value="4">Kamis</option>
+              <option value="5">Jumat</option>
+              <option value="6">sabtu</option>
+            </select>
+          </div>
+          <!-- Jadwal -->
+          <label for="" class="mt-4">Jadwal</label>
+          <div class="input-group mt-2">
+            <input type="time" id="jamMulai" class="form-control" name="jamMulai">
+            <p class="mx-3 my-auto"><b>-</b></p>
+            <input type="time" id="jamSelesai" class="form-control" name="jamSelesai">
+          </div>
+
+          <!-- Form Ujian -->
+          <div class="d-flex justify-content-center mt-5">
+            <h3>Ujian</h2>
+          </div>
+          <!-- Ruangan -->
+          <label for="" class="">Ruangan</label>
+          <input type="text" aria-label="ruangan" class="form-control rounded mt-2" placeholder="Ruangan">
+          <!-- Hari Ujian -->
+          <label for="" class="mt-4">Hari Ujian</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>Senin</option>
+              <option value="2">Selasa</option>
+              <option value="3">Rabu</option>
+              <option value="4">Kamis</option>
+              <option value="5">Jumat</option>
+              <option value="6">sabtu</option>
+            </select>
+          </div>
+          <!-- Minggu Ke -->
+          <label for="" class="mt-4">Minggu Ke-</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <!-- Jam Ujian -->
+          <label for="" class="mt-4">Jam Ujian</label>
+          <div class="input-group mt-2 mb-4">
+            <input type="time" id="jamUjianMulai" class="form-control" name="jamUjianMulai">
+            <p class="mx-3 my-auto"><b>-</b></p>
+            <input type="time" id="jamUjianSelesai" class="form-control" name="jamUjianSelesai">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Input</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
