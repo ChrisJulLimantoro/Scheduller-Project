@@ -58,13 +58,29 @@ $(document).ready(function () {
         }
     })
 
+    const active = []
+
+    $(document.body).on('click', '.cbx-matkul', function(e) {
+        if ($(this).is(":checked")) {
+            active.push($(this).val())
+        }
+        else {
+            var index = active.indexOf($(this).val())
+    
+            if (index != -1) {
+                active.splice(index, 1)
+            }
+        }
+
+        console.log(active)
+    });
 
     $(".generateButton").click(function (e) {
         e.preventDefault();
-        let active = [];
-        $(".cbx-matkul:checked").each(function(){
-            active.push($(this).val());
-        });
+        // let active = [];
+        // $(".cbx-matkul:checked").each(function(){
+        //     active.push($(this).val());
+        // });
         let filter = {};
         let dosen = [];
         $('.like:checked').each(function(){
@@ -88,6 +104,8 @@ $(document).ready(function () {
         $(".loadScreen").css("display", "block");
         $(".boxHasil").hide().fadeIn();
         
+        console.log(active)
+        console.log(filter)
         $.ajax({
             url : '/generate/',
             method : 'POST',
@@ -102,7 +120,7 @@ $(document).ready(function () {
         })
         
         
-        });
+    });
 
         $("#senin").click(function () {
         if ($("#senin").is(":checked")) {
