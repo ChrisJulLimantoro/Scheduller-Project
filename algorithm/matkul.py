@@ -26,30 +26,35 @@ def convertJadwalToInt(hari,jam,menit,minggu=0):
 
 def convertIntToJadwal(convJadwal,lama):
     convJadwal = convJadwal + 1
-    minggu = convJadwal/(5*27)
-    hari = convJadwal%(5*27)/27
-    jam = ((convJadwal%(5*27))%27) + 7
-    menit = (((convJadwal%(5*27))%27)%2)*30
-    result = ""
+    minggu = (int)(convJadwal/(5*27))+1
+    hari = (int)(convJadwal%(5*27)/27)
+    jam = (int)(((convJadwal%(5*27))%27)/2 + 7)
+    menit = (int)((((convJadwal%(5*27))%27)%2)*30)
+    res_jam = ""
+    res_hari = ""
     if hari == 0:
-        result = 'Senin'
+        res_hari = 'Senin'
     elif hari == 1:
-        result = 'Selasa'
+        res_hari = 'Selasa'
     elif hari == 2:
-        result = 'Rabu'
+        res_hari = 'Rabu'
     elif hari == 3:
-        result = 'Kamis'
+        res_hari = 'Kamis'
     elif hari == 4:
-        result = 'Jumat'
+        res_hari = 'Jumat'
     else:
-        result = 'Sabtu'
+        res_hari = 'Sabtu'
     jamAkhir = int(jam+lama/2)
-    menitAkhir = 0
+    menitAkhir = '00'
     if lama%2 == 1 and menit == 30:
         jamAkhir += 1
-        menitAkhir = 0
+        menitAkhir = '00'
     elif lama%2 == 1 and menit == 0:
-        menitAkhir = 30
-        
-    result += ',' +str(jam) + ':' + str(menit) + '-' + str(jamAkhir) + ':' +str(menitAkhir)
-    return result
+        menitAkhir = '30'
+    menitAwal = ''
+    if menit == 0:
+        menitAwal = '00'
+    else:
+        menitAwal = '30'
+    res_jam +=  str(jam) + ':' + menitAwal + '-' + str(jamAkhir) + ':' + menitAkhir
+    return minggu,res_hari,res_jam

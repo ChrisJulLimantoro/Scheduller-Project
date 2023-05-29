@@ -1,6 +1,7 @@
 import json
 from flask import jsonify
 import main
+import algorithm.matkul as mat
 
 def get_dosen() :
     dosen = []
@@ -11,13 +12,31 @@ def get_dosen() :
     
 
 def get_matkul():
-    x = main.db_matkul.query.all()
-    result = [
-        {
-            
-        }
-    ]
-    return jsonify(result)
+    matkul = []
+    x = main.db.session.query(main.db_matkul.singkatan).distinct().all()
+    for i in x:
+        matkul.append(i[0])
+    return jsonify(matkul)
+
+def get_jadwal():
+    jadwal = []
+    jad = main.db_matkul.query.all()
+    for i in jad:
+        matkul = {}
+        matkul['id'] = i.id
+        matkul['nama'] = i.name
+        matkul['singkatan'] = i.singkatan
+        matkul['dosen'] = i.dosen
+        matkul['paralel'] = i.paralel
+        matkul['ruangan'] = i.ruangan
+        matkul['jadwal_kuliah'] = i.jadwal_kuliah
+        matkul['jadwal_kuliah_mgg'],matkul['jadwal_kuliah_hari'],matkul['jadwal_kuliah_jam'] = mat.convertIntToJadwal(i.jadwal_kuliah,i.lama_kuliah)
+        matkul['lama_kuliah'] = i.lama_kuliah
+        matkul['jadwal_ujian'] = i.jadwal_ujian
+        matkul['jadwal_ujian_mgg'],matkul['jadwal_ujian_hari'],matkul['jadwal_ujian_jam'] = mat.convertIntToJadwal(i.jadwal_ujian,6)
+        matkul['sks'] = i.sks
+        jadwal.append(matkul)
+    return jsonify(jadwal)
 
 def insert_matkul(data:list):
     for i in data:

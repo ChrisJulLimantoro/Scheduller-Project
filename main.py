@@ -48,9 +48,10 @@ def get():
 def get_mat():
     return get_matkul()
 
-@app.route("/get")
-def get_test():
-    return render_template('testing.html')
+@app.route("/get/",methods=["POST"])
+# api buat get_jadwal
+def get_jad():
+    return get_jadwal()
 
 @app.route("/load")
 def load():
