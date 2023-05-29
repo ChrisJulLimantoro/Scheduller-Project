@@ -4,3 +4,4 @@ algorithm/__pycache__/*
 migrations/__pycache__/*
 # ignore all versions/
 migrations/versions/*
+config.py
