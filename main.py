@@ -53,6 +53,12 @@ def get_mat():
 def get_jad():
     return get_jadwal()
 
+@app.route("/generate/",methods=["POST"])
+# api buat generate
+def gener():
+    data = json.loads(request.data)
+    return generate(data['active'],data['filter'],3)
+
 @app.route("/load")
 def load():
     return render_template('loader.html')

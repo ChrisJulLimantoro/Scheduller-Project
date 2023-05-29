@@ -1,4 +1,4 @@
-from matkul import Matkul
+from algorithm.matkul import Matkul
 import numpy as np 
 import random
 

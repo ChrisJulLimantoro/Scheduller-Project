@@ -55,26 +55,35 @@ def insert_matkul(data:list):
     main.db.session.commit()
     return "1"
 
-def generate(active:list,filt:list):
+def generate(active:list,filt:list, iterarion:int) -> list:
     jad = main.db_matkul.query.all()
     listMat = []
+    
     for i in jad:
         if i.id in active:
-            newMat = mat.Matkul(i.name,i.singkatan,i.paralel,i.ruangan,i.dosen,i.jadwalKelas,i.lamaKelas,i.jadwalUjian,i.sks)
+            newMat = mat.Matkul(i.name,i.singkatan,i.paralel,i.ruangan,i.dosen,i.jadwal_kuliah,i.lama_kuliah,i.jadwal_ujian,i.sks)
             listMat.append(newMat)
         else:
             continue
+
     bestGlobal = []
-    for i in range(3):
-        states = []
-        states = algo.generateStates(listMat,filt['maxSKS'])
+    for i in range(iterarion):
         best = []
-        best = algo.findBest(listMat,filt['minSKS'],filt['maxSKS'],filt['hariMasuk'],filt['maksJam'],filt['dosen'],filt['matkulFav'],best)
+        best = algo.run(listMat,filt['minSKS'],filt['maxSKS'],filt['hariMasuk'],filt['maksJam'],filt['dosen'],filt['matkulFav'],best)
+
+        # states = []
+        # states = algo.generateStates(listMat,filt['maxSKS'])
+        # best = []
+        # best = algo.findBest(listMat,filt['minSKS'],filt['maxSKS'],filt['hariMasuk'],filt['maksJam'],filt['dosen'],filt['matkulFav'],best)
+
+        print(best)
         if bestGlobal == []:
             bestGlobal = best
+            sorted(best, key=lambda x : x[1])
         else:
-            for j in bestGlobal:
-                for k in best:
-                    # if algo.cekFitness(j.)
-                    pass
-    
+            for k in best:
+                if k[1] > bestGlobal[2][1] and not algo.cekKembar(k, bestGlobal) :
+                    bestGlobal[2] = k
+                    sorted(best, key=lambda x : x[1])
+            
+    return jsonify(bestGlobal)
