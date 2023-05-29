@@ -17,7 +17,8 @@
   <script>
     $(document).ready(function () {
       $(".generateButton").click(function () {
-        $(".loader").show().delay(2000).fadeOut();
+        $(".loadScreen").css("display", "block")
+        $(".loadScreen").show().delay(2000).fadeOut();
         $(".boxHasil").hide().delay(2000).fadeIn();
       });
 
@@ -102,7 +103,14 @@
     }
 
     .loader {
-      display: none;
+      /* display: none; */
+      position: fixed;
+      left: 50%;
+      top: 35%;
+      /* display: none; */
+      z-index: 10;
+      height: 31px;
+      width: 31px;
     }
 
     .boxHasil {
@@ -131,13 +139,441 @@
     .jamHari {
       display: none;
     }
+
+    .btn-close {
+      transition: all 1s ease;
+    }
+
+    .btn-close:hover {
+      transform: rotate(360deg) scale(1.2);
+    }
+
+    .con-like {
+      --red: rgb(255, 50, 100);
+      margin-left: -0.2em;
+      margin-right: 2em;
+      position: relative;
+      width: 20px;
+      height: 20px;
+    }
+
+    .con-like .like {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 20;
+      cursor: pointer;
+    }
+
+    .con-like .checkmark {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .con-like .outline,
+    .con-like .filled {
+      fill: var(--red);
+      position: absolute;
+    }
+
+    .con-like .filled {
+      animation: kfr-filled 0.5s;
+      display: none;
+    }
+
+    .con-like .celebrate {
+      position: absolute;
+      animation: kfr-celebrate 0.5s;
+      animation-fill-mode: forwards;
+      display: none;
+    }
+
+    .con-like .poly {
+      stroke: var(--red);
+      fill: var(--red);
+    }
+
+    .con-like .like:checked~.checkmark .filled {
+      display: block
+    }
+
+    .con-like .like:checked~.checkmark .celebrate {
+      display: block
+    }
+
+    @keyframes kfr-filled {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes kfr-celebrate {
+      0% {
+        transform: scale(0);
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.2);
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    .checkbox-wrapper-12 {
+      position: relative;
+    }
+
+    .checkbox-wrapper-12>svg {
+      position: absolute;
+      top: -130%;
+      left: -170%;
+      width: 110px;
+      pointer-events: none;
+    }
+
+    .checkbox-wrapper-12 * {
+      box-sizing: border-box;
+    }
+
+    .checkbox-wrapper-12 input[type="checkbox"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .checkbox-wrapper-12 input[type="checkbox"]:focus {
+      outline: 0;
+    }
+
+    .checkbox-wrapper-12 .cbx {
+      width: 24px;
+      height: 24px;
+      top: calc(100px - 12px);
+      left: calc(100px - 12px);
+    }
+
+    .checkbox-wrapper-12 .cbx input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #bfbfc0;
+      border-radius: 50%;
+    }
+
+    .checkbox-wrapper-12 .cbx label {
+      width: 24px;
+      height: 24px;
+      background: none;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: trasnlate3d(0, 0, 0);
+      pointer-events: none;
+    }
+
+    .checkbox-wrapper-12 .cbx svg {
+      position: absolute;
+      top: 5px;
+      left: 4px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .checkbox-wrapper-12 .cbx svg path {
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 19;
+      stroke-dashoffset: 19;
+      transition: stroke-dashoffset 0.3s ease;
+      transition-delay: 0.2s;
+    }
+
+    .checkbox-wrapper-12 .cbx input:checked+label {
+      animation: splash-12 0.6s ease forwards;
+    }
+
+    .checkbox-wrapper-12 .cbx input:checked+label+svg path {
+      stroke-dashoffset: 0;
+    }
+
+    @-moz-keyframes splash-12 {
+      40% {
+        background: #4BB543;
+        box-shadow: 0 -18px 0 -8px #4BB543, 16px -8px 0 -8px #4BB543, 16px 8px 0 -8px #4BB543, 0 18px 0 -8px #4BB543, -16px 8px 0 -8px #4BB543, -16px -8px 0 -8px #4BB543;
+      }
+
+      100% {
+        background: #4BB543;
+        box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+      }
+    }
+
+    @-webkit-keyframes splash-12 {
+      40% {
+        background: #4BB543;
+        box-shadow: 0 -18px 0 -8px #4BB543, 16px -8px 0 -8px #4BB543, 16px 8px 0 -8px #4BB543, 0 18px 0 -8px #4BB543, -16px 8px 0 -8px #4BB543, -16px -8px 0 -8px #4BB543;
+      }
+
+      100% {
+        background: #4BB543;
+        box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+      }
+    }
+
+    @-o-keyframes splash-12 {
+      40% {
+        background: #4BB543;
+        box-shadow: 0 -18px 0 -8px #4BB543, 16px -8px 0 -8px #4BB543, 16px 8px 0 -8px #4BB543, 0 18px 0 -8px #4BB543, -16px 8px 0 -8px #4BB543, -16px -8px 0 -8px #4BB543;
+      }
+
+      100% {
+        background: #4BB543;
+        box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+      }
+    }
+
+    @keyframes splash-12 {
+      40% {
+        background: #4BB543;
+        box-shadow: 0 -18px 0 -8px #4BB543, 16px -8px 0 -8px #4BB543, 16px 8px 0 -8px #4BB543, 0 18px 0 -8px #4BB543, -16px 8px 0 -8px #4BB543, -16px -8px 0 -8px #4BB543;
+      }
+
+      100% {
+        background: #4BB543;
+        box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+      }
+    }
+
+    .loadScreen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #D0F5BE;
+      opacity: 95%;
+      display: none;
+      z-index: 500;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+
+    .checkbox-wrapper-19 {
+      box-sizing: border-box;
+      --background-color: #fff;
+      --checkbox-height: 15px;
+    }
+
+    @-moz-keyframes dothabottomcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) / 2);
+      }
+    }
+
+    @-webkit-keyframes dothabottomcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) / 2);
+      }
+    }
+
+    @keyframes dothabottomcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) / 2);
+      }
+    }
+
+    @keyframes dothatopcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      50% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) * 1.2);
+      }
+    }
+
+    @-webkit-keyframes dothatopcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      50% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) * 1.2);
+      }
+    }
+
+    @-moz-keyframes dothatopcheck-19 {
+      0% {
+        height: 0;
+      }
+
+      50% {
+        height: 0;
+      }
+
+      100% {
+        height: calc(var(--checkbox-height) * 1.2);
+      }
+    }
+
+    .checkbox-wrapper-19 input[type=checkbox] {
+      display: none;
+    }
+
+    .checkbox-wrapper-19 .check-box {
+      height: var(--checkbox-height);
+      width: var(--checkbox-height);
+      background-color: transparent;
+      border: calc(var(--checkbox-height) * .1) solid #000;
+      border-radius: 5px;
+      position: relative;
+      display: inline-block;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      -moz-transition: border-color ease 0.2s;
+      -o-transition: border-color ease 0.2s;
+      -webkit-transition: border-color ease 0.2s;
+      transition: border-color ease 0.2s;
+      cursor: pointer;
+    }
+
+    .checkbox-wrapper-19 .check-box::before,
+    .checkbox-wrapper-19 .check-box::after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      height: 0;
+      width: calc(var(--checkbox-height) * .2);
+      background-color: #34b93d;
+      display: inline-block;
+      -moz-transform-origin: left top;
+      -ms-transform-origin: left top;
+      -o-transform-origin: left top;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+      border-radius: 5px;
+      content: " ";
+      -webkit-transition: opacity ease 0.5;
+      -moz-transition: opacity ease 0.5;
+      transition: opacity ease 0.5;
+    }
+
+    .checkbox-wrapper-19 .check-box::before {
+      top: calc(var(--checkbox-height) * .72);
+      left: calc(var(--checkbox-height) * .41);
+      box-shadow: 0 0 0 calc(var(--checkbox-height) * .05) var(--background-color);
+      -moz-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+
+    .checkbox-wrapper-19 .check-box::after {
+      top: calc(var(--checkbox-height) * .37);
+      left: calc(var(--checkbox-height) * .05);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    .checkbox-wrapper-19 input[type=checkbox]:checked+.check-box,
+    .checkbox-wrapper-19 .check-box.checked {
+      border-color: #34b93d;
+    }
+
+    .checkbox-wrapper-19 input[type=checkbox]:checked+.check-box::after,
+    .checkbox-wrapper-19 .check-box.checked::after {
+      height: calc(var(--checkbox-height) / 2);
+      -moz-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+      -o-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+      -webkit-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+      animation: dothabottomcheck-19 0.2s ease 0s forwards;
+    }
+
+    .checkbox-wrapper-19 input[type=checkbox]:checked+.check-box::before,
+    .checkbox-wrapper-19 .check-box.checked::before {
+      height: calc(var(--checkbox-height) * 1.2);
+      -moz-animation: dothatopcheck-19 0.4s ease 0s forwards;
+      -o-animation: dothatopcheck-19 0.4s ease 0s forwards;
+      -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
+      animation: dothatopcheck-19 0.4s ease 0s forwards;
+    }
   </style>
 
 </head>
 
 <body>
+  <!-- LOADER -->
+  <div class="loadScreen">
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster loader">
+      <div class="wheel"></div>
+      <div class="hamster">
+        <div class="hamster__body">
+          <div class="hamster__head">
+            <div class="hamster__ear"></div>
+            <div class="hamster__eye"></div>
+            <div class="hamster__nose"></div>
+          </div>
+          <div class="hamster__limb hamster__limb--fr"></div>
+          <div class="hamster__limb hamster__limb--fl"></div>
+          <div class="hamster__limb hamster__limb--br"></div>
+          <div class="hamster__limb hamster__limb--bl"></div>
+          <div class="hamster__tail"></div>
+        </div>
+      </div>
+      <div class="spoke"></div>
+    </div>
+  </div>
   <!-- outer div -->
   <div id="outerDiv">
+
     <h1 class="m-5">Pilih Jadwal Anda</h1>
 
     <!-- inner div -->
@@ -264,26 +700,77 @@
               <div class="overSelect"></div>
             </div>
             <div id="checkBoxDosen" class="checkBox bg-white text-dark rounded px-3 my-3 py-2">
-              <label for="dosen1">
-                <input type="checkbox" class="inputDosen form-check-input" id="dosen1" />
-                Kent Maynard
-              </label>
-              <label for="dosen2">
-                <input type="checkbox" class="inputDosen form-check-input" id="dosen2" />
-                Ferdinand Marco
-              </label>
-              <label for="dosen3">
+              <div class="row mb-2">
+                <div class="col-3">
+                  <div class="con-like">
+                    <input title="like" type="checkbox" class="like" id="dosen1" style="display: hidden;" value="KENT">
+                    <div class="checkmark">
+                      <svg viewBox="0 0 24 24" class="outline" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 24 24" class="filled" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                        </path>
+                      </svg>
+                      <svg class="celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="10,10 20,20" class="poly"></polygon>
+                        <polygon points="10,50 20,50" class="poly"></polygon>
+                        <polygon points="20,80 30,70" class="poly"></polygon>
+                        <polygon points="90,10 80,20" class="poly"></polygon>
+                        <polygon points="90,50 80,50" class="poly"></polygon>
+                        <polygon points="80,80 70,70" class="poly"></polygon>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-9" style="margin-left: -1em; margin-top: -0.2em;">
+                  <label for="dosen1">KEN</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="con-like">
+                    <input title="like" type="checkbox" class="like" id="dosen1" style="display: hidden;" value="KENT">
+                    <div class="checkmark">
+                      <svg viewBox="0 0 24 24" class="outline" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 24 24" class="filled" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                        </path>
+                      </svg>
+                      <svg class="celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="10,10 20,20" class="poly"></polygon>
+                        <polygon points="10,50 20,50" class="poly"></polygon>
+                        <polygon points="20,80 30,70" class="poly"></polygon>
+                        <polygon points="90,10 80,20" class="poly"></polygon>
+                        <polygon points="90,50 80,50" class="poly"></polygon>
+                        <polygon points="80,80 70,70" class="poly"></polygon>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-9" style="margin-left: -1em; margin-top: -0.2em;">
+                  <label for="dosen1">KEN</label>
+                </div>
+              </div>
+              <!-- <label for="dosen3">
                 <input type="checkbox" class="inputDosen form-check-input" id="dosen3" />
                 Darrel
               </label>
               <label for="dosen4">
                 <input type="checkbox" class="inputDosen form-check-input" id="dosen4" />
                 Sutjipto
-              </label>
+              </label> -->
             </div>
           </div>
 
-          <!-- Dosen yang Dihindari  -->
           <label for="">Mata Kuliah yang diinginkan :</label>
           <div class="multipleSelection mt-2 mb-3">
             <div class="selectBox" onclick="showCheckboxMatkul()">
@@ -293,22 +780,42 @@
               <div class="overSelect"></div>
             </div>
             <div id="checkBoxMatkul" class="checkBox bg-white text-dark rounded px-3 my-3 py-2">
-              <label for="matkul1">
-                <input type="checkbox" class="inputMatkul form-check-input" id="matkul1" />
-                IMK
-              </label>
-              <label for="matkul2">
-                <input type="checkbox" class="inputMatkul form-check-input" id="matkul2" />
-                DAA
-              </label>
-              <label for="matkul3">
-                <input type="checkbox" class="inputMatkul form-check-input" id="matkul3" />
-                AOK
-              </label>
-              <label for="matkul4">
-                <input type="checkbox" class="inputMatkul form-check-input" id="matkul4" />
-                Grafkom
-              </label>
+              <div class="row">
+                <div class="col-3">
+                  <div class="checkbox-wrapper-19">
+                    <input id="cbtest-19" type="checkbox">
+                    <label class="check-box" for="cbtest-19">
+                    </label>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <label for="cbtest-19">IMK</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="checkbox-wrapper-19">
+                    <input id="Matkul2" type="checkbox">
+                    <label class="check-box" for="Matkul2">
+                    </label>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <label for="Matkul2">SO</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="checkbox-wrapper-19">
+                    <input id="Matkul3" type="checkbox">
+                    <label class="check-box" for="Matkul3">
+                    </label>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <label for="Matkul3">Matdis</label>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -322,7 +829,7 @@
 
         <div class="shadow rounded p-3 me-3">
           <div class="d-flex gap-3 ms-4 mt-4">
-            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Pilih Mata kuliah</button>
             <input type="file" id="upload"
               accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
             <button type="button" class="btn btn-outline-success uploadButton"><label for="upload" id="uploadLabel"><i
@@ -343,6 +850,7 @@
                   <th scope="col">SKS</th>
                   <th scope="col">Hari</th>
                   <th scope="col">Jadwal</th>
+                  <th scope="col">Select</th>
                 </tr>
               </thead>
               <tbody>
@@ -354,6 +862,28 @@
                   <td>3</td>
                   <td>Kamis</td>
                   <td>07.30-10.30</td>
+                  <td style="padding-left: 1.3em;">
+                    <div class="checkbox-wrapper-12">
+                      <div class="cbx">
+                        <input id="cbx-12" type="checkbox">
+                        <label for="cbx-12"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                          <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                          <filter id="goo-12">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
+                              result="goo-12"></feColorMatrix>
+                            <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
@@ -363,6 +893,28 @@
                   <td>3</td>
                   <td>Kamis</td>
                   <td>07.30-10.30</td>
+                  <td style="padding-left: 1.3em;">
+                    <div class="checkbox-wrapper-12">
+                      <div class="cbx">
+                        <input id="cbx-12" type="checkbox">
+                        <label for="cbx-12"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                          <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                          <filter id="goo-12">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
+                              result="goo-12"></feColorMatrix>
+                            <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
@@ -372,6 +924,28 @@
                   <td>3</td>
                   <td>Kamis</td>
                   <td>07.30-10.30</td>
+                  <td style="padding-left: 1.3em;">
+                    <div class="checkbox-wrapper-12">
+                      <div class="cbx">
+                        <input id="cbx-12" type="checkbox">
+                        <label for="cbx-12"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                          <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                          <filter id="goo-12">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
+                              result="goo-12"></feColorMatrix>
+                            <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">4</th>
@@ -381,6 +955,28 @@
                   <td>3</td>
                   <td>Kamis</td>
                   <td>07.30-10.30</td>
+                  <td style="padding-left: 1.3em;">
+                    <div class="checkbox-wrapper-12">
+                      <div class="cbx">
+                        <input id="cbx-12" type="checkbox">
+                        <label for="cbx-12"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                          <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                          <filter id="goo-12">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
+                              result="goo-12"></feColorMatrix>
+                            <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">5</th>
@@ -390,6 +986,28 @@
                   <td>3</td>
                   <td>Kamis</td>
                   <td>07.30-10.30</td>
+                  <td style="padding-left: 1.3em;">
+                    <div class="checkbox-wrapper-12">
+                      <div class="cbx">
+                        <input id="cbx-12" type="checkbox">
+                        <label for="cbx-12"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                          <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
+                      </div>
+
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                          <filter id="goo-12">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
+                              result="goo-12"></feColorMatrix>
+                            <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -400,26 +1018,6 @@
 
       </div>
       <!-- close table section -->
-      <!-- LOADER -->
-      <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster loader"
-        style="margin-left: 50em;">
-        <div class="wheel"></div>
-        <div class="hamster">
-          <div class="hamster__body">
-            <div class="hamster__head">
-              <div class="hamster__ear"></div>
-              <div class="hamster__eye"></div>
-              <div class="hamster__nose"></div>
-            </div>
-            <div class="hamster__limb hamster__limb--fr"></div>
-            <div class="hamster__limb hamster__limb--fl"></div>
-            <div class="hamster__limb hamster__limb--br"></div>
-            <div class="hamster__limb hamster__limb--bl"></div>
-            <div class="hamster__tail"></div>
-          </div>
-        </div>
-        <div class="spoke"></div>
-      </div>
 
       <!-- table hasil 1 -->
       <div class="row">
@@ -437,6 +1035,7 @@
                 <th scope="col">SKS</th>
                 <th scope="col">Hari</th>
                 <th scope="col">Jadwal</th>
+
               </tr>
             </thead>
             <!-- BODY -->
@@ -490,11 +1089,176 @@
           </table>
         </div>
       </div>
+
+      <!-- Jadwal Ujian hasil 1 -->
+      <div class="row">
+        <div class="col-md-3 col-1"></div>
+        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+          <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Pertama</h2>
+          <br>
+          <table class="table table-striped text-center" id="tableUjian1" style="margin-top: 1em;">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nama Mata Kuliah</th>
+                <th scope="col">Nama Dosen</th>
+                <th scope="col">Kelas Paralel</th>
+                <th scope="col">Ruangan</th>
+                <th scope="col">Hari</th>
+                <th scope="col">Minggu ke-</th>
+                <th scope="col">Jadwal</th>
+
+              </tr>
+            </thead>
+            <!-- BODY -->
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <th scope="row">Statistika Terapan</th>
+                <td>Kent Maynard</td>
+                <td>A</td>
+                <td>P505</td>
+                <td>Kamis</td>
+                <td>1</td>
+                <td>07.30-10.30</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <th scope="row">Matematika Diskrit</th>
+                <td>Kent Maynard</td>
+                <td>A</td>
+                <td>P505</td>
+                <td>Kamis</td>
+                <td>1</td>
+                <td>07.30-10.30</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <th scope="row">Statistika Dasar</th>
+                <td>Kent Maynard</td>
+                <td>A</td>
+                <td>P505</td>
+                <td>Kamis</td>
+                <td>1</td>
+                <td>07.30-10.30</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <th scope="row">Statistika Lanjutan</th>
+                <td>Kent Maynard</td>
+                <td>A</td>
+                <td>P505</td>
+                <td>Kamis</td>
+                <td>1</td>
+                <td>07.30-10.30</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <th scope="row">Statistika Bisnis</th>
+                <td>Kent Maynard</td>
+                <td>A</td>
+                <td>P505</td>
+                <td>Kamis</td>
+                <td>1</td>
+                <td>07.30-10.30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
   </div>
   <!-- close inner div -->
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Input Mata Kuliah</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-center mt-3">
+            <h3>Mata Kuliah</h2>
+          </div>
+          <!-- Nama Mata Kuliah -->
+          <label for="" class="">Nama Mata Kuliah</label>
+          <input type="text" aria-label="namaMataKuliah" class="form-control rounded mt-2" placeholder="Nama Mata Kuliah">
+          <!-- Nama Dosen -->
+          <label for="" class="mt-4">Nama Dosen</label>
+          <input type="text" aria-label="namaDosen" class="form-control rounded mt-2" placeholder="Nama Dosen">
+          <!-- Kelas Paralel -->
+          <label for="" class="mt-4">Kelas Paralel</label>
+          <input type="text" aria-label="kelasParalel" class="form-control rounded mt-2" placeholder="Kelas Paralel">
+          <!-- Jumlah SKS -->
+          <label for="" class="mt-4">Jumlah SKS</label>
+          <input type="text" aria-label="jumlahSKS" class="form-control rounded mt-2" placeholder="Jumlah SKS">
+          <!-- Hari -->
+          <label for="" class="mt-4">Hari Mata Kuliah</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>Senin</option>
+              <option value="2">Selasa</option>
+              <option value="3">Rabu</option>
+              <option value="4">Kamis</option>
+              <option value="5">Jumat</option>
+              <option value="6">sabtu</option>
+            </select>
+          </div>
+          <!-- Jadwal -->
+          <label for="" class="mt-4">Jadwal</label>
+          <div class="input-group mt-2">
+            <input type="time" id="jamMulai" class="form-control" name="jamMulai">
+            <p class="mx-3 my-auto"><b>-</b></p>
+            <input type="time" id="jamSelesai" class="form-control" name="jamSelesai">
+          </div>
+
+          <!-- Form Ujian -->
+          <div class="d-flex justify-content-center mt-5">
+            <h3>Ujian</h2>
+          </div>
+          <!-- Ruangan -->
+          <label for="" class="">Ruangan</label>
+          <input type="text" aria-label="ruangan" class="form-control rounded mt-2" placeholder="Ruangan">
+          <!-- Hari Ujian -->
+          <label for="" class="mt-4">Hari Ujian</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>Senin</option>
+              <option value="2">Selasa</option>
+              <option value="3">Rabu</option>
+              <option value="4">Kamis</option>
+              <option value="5">Jumat</option>
+              <option value="6">sabtu</option>
+            </select>
+          </div>
+          <!-- Minggu Ke -->
+          <label for="" class="mt-4">Minggu Ke-</label>
+          <div class="rounded mt-2">
+            <select class="form-select" aria-label="Default select example">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <!-- Jam Ujian -->
+          <label for="" class="mt-4">Jam Ujian</label>
+          <div class="input-group mt-2 mb-4">
+            <input type="time" id="jamUjianMulai" class="form-control" name="jamUjianMulai">
+            <p class="mx-3 my-auto"><b>-</b></p>
+            <input type="time" id="jamUjianSelesai" class="form-control" name="jamUjianSelesai">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success">Input</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
@@ -507,6 +1271,9 @@
     responsive: true
   });
   $('#table1').DataTable({
+    responsive: true
+  });
+  $('#tableUjian1').DataTable({
     responsive: true
   })
 </script>
