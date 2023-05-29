@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  
   <!-- dataTables -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
@@ -421,13 +422,13 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-success text-light" data-bs-theme="dark">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Input Mata Kuliah</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modalBody">
           <div class="d-flex justify-content-center mt-3">
-            <h3>Mata Kuliah</h2>
+            <h3>Mata Kuliah</h3>
           </div>
           <!-- Nama Mata Kuliah -->
           <label for="namaMataKuliah" class="">Nama Mata Kuliah</label>
@@ -456,14 +457,14 @@
           <!-- Jadwal -->
           <label for="jamMulai" class="mt-4">Jadwal</label>
           <div class="input-group mt-2">
-            <input type="time" id="jamMulai" class="form-control" name="jamMulai">
+            <input type="time" class="time-pickable form-control" readonly>
             <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" id="jamSelesai" class="form-control" name="jamSelesai">
+            <input type="time" class="time-pickable form-control" readonly>
           </div>
 
           <!-- Form Ujian -->
           <div class="d-flex justify-content-center mt-5">
-            <h3>Ujian</h2>
+            <h3>Ujian</h3>
           </div>
           <!-- Ruangan -->
           <label for="ruangan" class="">Ruangan</label>
@@ -490,27 +491,75 @@
           </div>
           <!-- Jam Ujian -->
           <label for="jamUjian" class="mt-4">Jam Ujian</label>
-          <div class="input-group mt-2 mb-4" id="jamUjian">
+          <div class="input-group mt-2 mb-4">
             <input type="time" id="jamUjianMulai" class="form-control" name="jamUjianMulai">
             <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" id="jamUjianSelesai" class="form-control" name="jamUjianSelesai">
+            <input type="time" class="time-pickable form-control" readonly>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-success">Input</button>
         </div>
       </div>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-</body>
 
+  <!-- coba time picker-->
+  <input type="time" class="time-pickable form-control" readonly>
+
+</body>
 </html>
 
+<!-- script modal -->
 <script>
-  
+  $('#myTable').DataTable({
+    responsive: true
+  });
+  $('#table1').DataTable({
+    responsive: true
+  });
+  $('#tableUjian1').DataTable({
+    responsive: true
+  })
+</script>
+
+<script>
+  var show = true;
+
+  function showCheckboxDosen() {
+    var checkBoxDosen = document.getElementById("checkBoxDosen");
+
+    if (show) {
+      checkBoxDosen.style.display = "block";
+      show = false;
+    } else {
+      checkBoxDosen.style.display = "none";
+      show = true;
+    }
+  }
+
+  function showCheckBoxHari() {
+    var checkBoxHari = document.getElementById("checkBoxHari");
+
+    if (show) {
+      checkBoxHari.style.display = "block";
+      show = false;
+    } else {
+      checkBoxHari.style.display = "none";
+      show = true;
+    }
+  }
+
+  function showCheckboxMatkul() {
+    var checkboxMatkul = document.getElementById("checkBoxMatkul");
+
+    if (show) {
+      checkboxMatkul.style.display = "block";
+      show = false;
+    } else {
+      checkboxMatkul.style.display = "none";
+      show = true;
+    }
+  }
 </script>
