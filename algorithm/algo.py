@@ -1,4 +1,4 @@
-from fitness import *
+from algorithm.fitness import *
 import random
 from timeit import default_timer as timer
 # import numpy as np
@@ -15,9 +15,9 @@ def generateStates(listMatkul:list, maksSks:int) -> list:
     return states
 
 # find best fitness among all states
-def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list) -> list:
+def findBest(states:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list) -> list:
     count = 0
-    global states
+    # global states
 
     while(count < 200):
         fitness = []
@@ -265,6 +265,16 @@ def randomSelectBest(best:list) -> int:
         if now >= cek :
             return i
 
+def run(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list):
+    start = timer()
+    best = []
+    states = []
+    states = generateStates(listMat, 24)
+    best = findBest(states, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav, [])
+    end = timer()
+    print('Time:', (end - start))
+    print(best)
+
 # Senin = 0
 # Selasa = 27
 # Rabu = 54
@@ -304,12 +314,4 @@ listMat = [
     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 42, 3),
 ]
 
-# start = timer()
-# best = []
-# states = []
-# states = generateStates(listMat, 24)
-# best = findBest(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
-# end = timer()
-# print('Time:', (end - start))
-# print(best)
-
+run(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
