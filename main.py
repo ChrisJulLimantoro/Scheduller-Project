@@ -43,6 +43,11 @@ def insert():
 def get():
     return get_dosen()
 
+@app.route("/get_matkul/",methods =["POST"])
+# api buat get_matkul
+def get_mat():
+    return get_matkul()
+
 @app.route("/get")
 def get_test():
     return render_template('testing.html')

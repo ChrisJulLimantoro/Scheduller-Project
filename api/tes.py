@@ -11,9 +11,15 @@ def get_dosen() :
     
 
 def get_matkul():
-    pass
+    x = main.db_matkul.query.all()
+    result = [
+        {
+            
+        }
+    ]
+    return jsonify(result)
 
-def insert_matkul(data):
+def insert_matkul(data:list):
     for i in data:
         nama = data[i]['nama']
         sing = data[i]['singkatan']
