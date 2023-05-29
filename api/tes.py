@@ -2,6 +2,7 @@ import json
 from flask import jsonify
 import main
 import algorithm.matkul as mat
+import algorithm.algo as algo
 
 def get_dosen() :
     dosen = []
@@ -54,5 +55,26 @@ def insert_matkul(data:list):
     main.db.session.commit()
     return "1"
 
-def generate(filter : list):
-    pass
+def generate(active:list,filt:list):
+    jad = main.db_matkul.query.all()
+    listMat = []
+    for i in jad:
+        if i.id in active:
+            newMat = mat.Matkul(i.name,i.singkatan,i.paralel,i.ruangan,i.dosen,i.jadwalKelas,i.lamaKelas,i.jadwalUjian,i.sks)
+            listMat.append(newMat)
+        else:
+            continue
+    bestGlobal = []
+    for i in range(3):
+        states = []
+        states = algo.generateStates(listMat,filt['maxSKS'])
+        best = []
+        best = algo.findBest(listMat,filt['minSKS'],filt['maxSKS'],filt['hariMasuk'],filt['maksJam'],filt['dosen'],filt['matkulFav'],best)
+        if bestGlobal == []:
+            bestGlobal = best
+        else:
+            for j in bestGlobal:
+                for k in best:
+                    # if algo.cekFitness(j.)
+                    pass
+    

@@ -15,7 +15,7 @@ def generateStates(listMatkul:list, maksSks:int) -> list:
     return states
 
 # find best fitness among all states
-def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list) -> None:
+def findBest(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list, best:list) -> list:
     count = 0
     global states
 
@@ -304,12 +304,12 @@ listMat = [
     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 42, 3),
 ]
 
-start = timer()
-best = []
-states = []
-states = generateStates(listMat, 24)
-best = findBest(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
-end = timer()
-print('Time:', (end - start))
-print(best)
+# start = timer()
+# best = []
+# states = []
+# states = generateStates(listMat, 24)
+# best = findBest(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
+# end = timer()
+# print('Time:', (end - start))
+# print(best)
 

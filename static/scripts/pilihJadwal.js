@@ -45,7 +45,7 @@ $(document).ready(function () {
             $('#checkBoxMatkul').append(`<div class="row">
             <div class="col-3">
                 <div class="checkbox-wrapper-19">
-                <input id="matkul`+index+`" type="checkbox" value='`+value+`' name='matkul`+index+`''>
+                <input class="cbx-fav" id="matkul`+index+`" type="checkbox" value='`+value+`' name='matkul`+index+`''>
                 <label class="check-box" for="matkul`+index+`">
                 </label>
                 </div>
@@ -73,10 +73,35 @@ $(document).ready(function () {
         filter['dosen'] = dosen;
         filter['minSKS'] = $('#minSKS').val();
         filter['maxSKS'] = $('#maxSKS').val();
-        filter['']
+        let matkul = [];
+        $('.cbx-fav:checked').each(function(){
+            matkul.push($(this).val());
+        })
+        filter['matkulFav'] = matkul;
+        hariMasuk = [0,0,0,0,0,0]
+        $('.inputHari:checked').each(function(){
+            hariMasuk[$(this).val()] = 1;
+        });
+        filter['hariMasuk'] = hariMasuk;
+        maksJam = [$('#jamSenin').val(),$('#jamSelasa').val(),$('#jamRabu').val(),$('#jamKamis').val(),$('#jamJumat').val(),$('#jamSabtu').val()]
+        filter['maksJam'] = maksJam;
         $(".loadScreen").css("display", "block");
-        $(".loadScreen").show().delay(2000).fadeOut();
-        $(".boxHasil").hide().delay(2000).fadeIn();
+        $(".boxHasil").hide().fadeIn();
+        
+        $.ajax({
+            url : '/generate/',
+            method : 'POST',
+            data : {
+                "active" : active,
+                "filter" : filter
+            },
+            success : function(response){
+                console.log(response);
+                $(".loadScreen").show().fadeOut();
+            }
+        })
+        
+        
         });
 
         $("#senin").click(function () {
@@ -177,44 +202,47 @@ $(document).ready(function () {
         })
         var show = true;
         
-        function showCheckboxDosen() {
-            var checkBoxDosen = document.getElementById("checkBoxDosen");
-        
-            if (show) {
-            checkBoxDosen.style.display = "block";
-            show = false;
-            } else {
-            checkBoxDosen.style.display = "none";
-            show = true;
-            }
-        }
-        
-        function showCheckBoxHari() {
-            var checkBoxHari = document.getElementById("checkBoxHari");
-        
-            if (show) {
-            checkBoxHari.style.display = "block";
-            show = false;
-            } else {
-            checkBoxHari.style.display = "none";
-            show = true;
-            }
-        }
-        
-        function showCheckboxMatkul() {
-            var checkboxMatkul = document.getElementById("checkBoxMatkul");
-        
-            if (show) {
-            checkboxMatkul.style.display = "block";
-            show = false;
-            } else {
-            checkboxMatkul.style.display = "none";
-            show = true;
-            }
-        }
     const location = document.getElementById("modalBody");
+    activate();
+});
 
-    function activate() {
+function showCheckboxDosen() {
+    var checkBoxDosen = document.getElementById("checkBoxDosen");
+
+    if (show) {
+    checkBoxDosen.style.display = "block";
+    show = false;
+    } else {
+    checkBoxDosen.style.display = "none";
+    show = true;
+    }
+}
+
+function showCheckBoxHari() {
+    var checkBoxHari = document.getElementById("checkBoxHari");
+
+    if (show) {
+    checkBoxHari.style.display = "block";
+    show = false;
+    } else {
+    checkBoxHari.style.display = "none";
+    show = true;
+    }
+}
+
+function showCheckboxMatkul() {
+    var checkboxMatkul = document.getElementById("checkBoxMatkul");
+
+    if (show) {
+    checkboxMatkul.style.display = "block";
+    show = false;
+    } else {
+    checkboxMatkul.style.display = "none";
+    show = true;
+    }
+}
+
+function activate() {
     document.head.insertAdjacentHTML("beforeend", `
     <style>
         .time-picker {
@@ -343,5 +371,3 @@ function numberToOption(number) {
 
     return `<option value="${padded}">${padded}</option>`;
 }
-activate();
-});
