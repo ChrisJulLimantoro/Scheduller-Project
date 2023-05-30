@@ -39,16 +39,18 @@ def convertIntToJadwal(convJadwal,lama):
     else:
         res_hari = 'Sabtu'
     jamAkhir = int(jam+lama/2)
+    menitAwal = ''
+    if menit == 0:
+        menitAwal = '00'
+    else:
+        menitAwal = '30'
     menitAkhir = '00'
     if lama%2 == 1 and menit == 30:
         jamAkhir += 1
         menitAkhir = '00'
     elif lama%2 == 1 and menit == 0:
         menitAkhir = '30'
-    menitAwal = ''
-    if menit == 0:
-        menitAwal = '00'
-    else:
-        menitAwal = '30'
+    elif lama%2 == 0 :
+        menitAkhir = menitAwal
     res_jam +=  str(jam) + ':' + menitAwal + '-' + str(jamAkhir) + ':' + menitAkhir
     return minggu,res_hari,res_jam
