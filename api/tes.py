@@ -78,17 +78,17 @@ def generate(active:list,filt:list, iterarion:int) -> list:
         # return best
         if bestGlobal == []:
             bestGlobal = best
-            sorted(bestGlobal, key=lambda x : x[1])
+            bestGlobal = sorted(bestGlobal, key=lambda x : x[1], reverse=True)
         else:
             for k in best:
                 duplicate = True
                 for j in bestGlobal:
                     duplicate = algo.cekKembar(k, j)
 
-                if not duplicate:
+                if not duplicate and k[1] > bestGlobal[2][1]:
                     bestGlobal.append(k)
-                    sorted(bestGlobal, key=lambda x : x[1])
-                    bestGlobal.pop(0)
+                    duplicates = sorted(bestGlobal, key=lambda x : x[1], reverse=True)
+                    bestGlobal.pop(3)
     result = []
     listMatkul2 = []
     # return jsonify(bestGlobal)
@@ -110,5 +110,5 @@ def generate(active:list,filt:list, iterarion:int) -> list:
                 listMatkul2.append(matkul)
         result.append([listMatkul2, i[1]])
         listMatkul2 = []
-    sorted(result, key=lambda x : x[1], reverse=True) 
+    result = sorted(result, key=lambda x : x[1], reverse=True) 
     return jsonify(result)
