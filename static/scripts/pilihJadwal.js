@@ -65,7 +65,8 @@ $(document).ready(function () {
             active.push(parseInt( $(this).val()))
         }
         else {
-            var index = active.indexOf($(this).val())
+            // console.log('checked')
+            var index = active.indexOf(parseInt($(this).val()))
     
             if (index != -1) {
                 active.splice(index, 1)
@@ -115,10 +116,45 @@ $(document).ready(function () {
             }),
             success : function(response){
                 console.log(response);
+                $.each(response, function(index, value) {
+                    $.each(response[index][0], function(key, value){
+                        // console.log(response[index])       
+                        $("#table" + (index+1) + ' tbody').append(`
+                        <tr>
+                            <th scope="row">` + (key+1) + `</th>
+                            <th scope="row">` + response[index][0][key]['nama'] + `</th>
+                            <td>` + response[index][0][key]['dosen'] + `</td>
+                            <td>` + response[index][0][key]['paralel'] + `</td>
+                            <td>` + response[index][0][key]['sks'] + `</td>
+                            <td>` + response[index][0][key]['jadwal_kuliah_hari'] + `</td>
+                            <td>` + response[index][0][key]['jadwal_kuliah_jam'] + `</td>
+                        </tr>`)
+                        
+                        $("#tableUjian" + (index+1) + " tbody").append(`
+                        <tr>
+                            <th scope="row">` + (key+1) + `</th>
+                            <th scope="row">` + response[index][0][key]['nama'] + `</th>
+                            <td>` + response[index][0][key]['dosen'] + `</td>
+                            <td>` + response[index][0][key]['paralel'] + `</td>
+                            <td>` + response[index][0][key]['ruangan'] + `</td>
+                            <td>` + response[index][0][key]['jadwal_ujian_hari'] + `</td>
+                            <td>` + response[index][0][key]['jadwal_ujian_mgg'] + `</td>
+                            <td>` + response[index][0][key]['jadwal_ujian_jam'] + `</td>
+                        </tr>`
+                        )
+                    })
+                });
+
+                $("#table1").DataTable();
+                $("#tableUjian1").DataTable();
+                $("#table2").DataTable();
+                $("#tableUjian2").DataTable();
+                $("#table3").DataTable();
+                $("#tableUjian3").DataTable();
+
                 $(".loadScreen").show().fadeOut();
             }
         })
-        
         
     });
 
@@ -169,15 +205,17 @@ $(document).ready(function () {
             $(".jamSabtu").css("display", "none");
         }
         })
+
         $.ajax({
             url : '/get/',
             type : 'POST',
             success: function(response){
-                $.each(response['id'],function(key,value){
-                    active.push(value);
+                $.each(response,function(key,value){
+                    active.push(parseInt(response[key]['id']));
                 });
             }
         })
+
         $('#myTable').DataTable({
             responsive: true,
             ajax : {
@@ -220,12 +258,12 @@ $(document).ready(function () {
             }},
             ]
         });
-        $('#table1').DataTable({
-            responsive: true
-        });
-        $('#tableUjian1').DataTable({
-            responsive: true
-        })
+        // $('#table1').DataTable({
+        //     responsive: true
+        // });
+        // $('#tableUjian1').DataTable({
+        //     responsive: true
+        // })
         var show = true;
         
     const location = document.getElementById("modalBody");

@@ -64,10 +64,10 @@ def cekCollision(state:list, listMat:list) -> int:
             # cek Collision jadwal ujian
             for j in range(i+1,state.__len__()):
                 if state[j] == 1:
-                    if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 3):
-                        result -= 2000
-                    elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 3):
-                        result -= 2000
+                    if listMat[j].jadwalUjian >= listMat[i].jadwalUjian and listMat[j].jadwalUjian < (listMat[i].jadwalUjian + 6):
+                        result -= 10000
+                    elif listMat[i].jadwalUjian >= listMat[j].jadwalUjian and listMat[i].jadwalUjian < (listMat[j].jadwalUjian + 6):
+                        result -= 10000
 
     return result
 

@@ -34,7 +34,7 @@ def get_jadwal():
         matkul['jadwal_kuliah_mgg'],matkul['jadwal_kuliah_hari'],matkul['jadwal_kuliah_jam'] = mat.convertIntToJadwal(i.jadwal_kuliah,i.lama_kuliah)
         matkul['lama_kuliah'] = i.lama_kuliah
         matkul['jadwal_ujian'] = i.jadwal_ujian
-        matkul['jadwal_ujian_mgg'],matkul['jadwal_ujian_hari'],matkul['jadwal_ujian_jam'] = mat.convertIntToJadwal(i.jadwal_ujian,6)
+        matkul['jadwal_ujian_mgg'],matkul['jadwal_ujian_hari'],matkul['jadwal_ujian_jam'] = mat.convertIntToJadwal(i.jadwal_ujian,3)
         matkul['sks'] = i.sks
         jadwal.append(matkul)
     return jsonify(jadwal)
@@ -78,7 +78,7 @@ def generate(active:list,filt:list, iterarion:int) -> list:
         # return best
         if bestGlobal == []:
             bestGlobal = best
-            sorted(bestGlobal, key=lambda x : x[1], reverse=True)
+            sorted(bestGlobal, key=lambda x : x[1])
         else:
             for k in best:
                 duplicate = True
@@ -87,15 +87,15 @@ def generate(active:list,filt:list, iterarion:int) -> list:
 
                 if not duplicate:
                     bestGlobal.append(k)
-                    sorted(bestGlobal, key=lambda x : x[1], reverse=True)
-                    bestGlobal.pop(4)
+                    sorted(bestGlobal, key=lambda x : x[1])
+                    bestGlobal.pop(0)
     result = []
+    listMatkul2 = []
+    # return jsonify(bestGlobal)
     for i in bestGlobal:
-        resTemp = []
         for j in range(i[0].__len__()):
-            if i[0][j] == 1:
+            if i[0][j] == 1:   
                 matkul = {}
-                matkul['id'] = listMat[j].id
                 matkul['nama'] = listMat[j].nama
                 matkul['singkatan'] = listMat[j].singkatan
                 matkul['dosen'] = listMat[j].dosen
@@ -107,7 +107,8 @@ def generate(active:list,filt:list, iterarion:int) -> list:
                 matkul['jadwal_ujian'] = listMat[j].jadwalUjian
                 matkul['jadwal_ujian_mgg'],matkul['jadwal_ujian_hari'],matkul['jadwal_ujian_jam'] = mat.convertIntToJadwal(listMat[j].jadwalUjian,6)
                 matkul['sks'] = listMat[j].sks
-                resTemp.append(matkul)
-                resTemp.append(i[1])
-        result.append(resTemp)        
+                listMatkul2.append(matkul)
+        result.append([listMatkul2, i[1]])
+        listMatkul2 = []
+    sorted(result, key=lambda x : x[1], reverse=True) 
     return jsonify(result)
