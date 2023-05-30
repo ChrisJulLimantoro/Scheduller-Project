@@ -9,12 +9,6 @@ class Matkul:
         self.lamaKelas = lamaKelas
         self.jadwalUjian = jadwalUjian
         self.sks = sks
-        
-    def print(self):
-        print("Nama Matkul : ",self.nama+" "+self.paralel)
-        print("Jadwal      : ",convertIntToJadwal(self.jadwalKelas,self.lamaKelas))
-        print("Nama Dosen  : ",self.dosen)
-        print("sks         : ",self.sks)
     
 def convertJadwalToInt(hari,jam,menit,minggu=0):
     # sistem penjadwalan kuubah ke angka dengan peraturan sebagai berikut

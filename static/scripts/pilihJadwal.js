@@ -62,7 +62,7 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.cbx-matkul', function(e) {
         if ($(this).is(":checked")) {
-            active.push($(this).val())
+            active.push(parseInt( $(this).val()))
         }
         else {
             var index = active.indexOf($(this).val())
@@ -87,8 +87,8 @@ $(document).ready(function () {
             dosen.push($(this).val());
         });
         filter['dosen'] = dosen;
-        filter['minSKS'] = $('#minSKS').val();
-        filter['maxSKS'] = $('#maxSKS').val();
+        filter['minSKS'] = parseInt($('#minSKS').val());
+        filter['maxSKS'] = parseInt($('#maxSKS').val());
         let matkul = [];
         $('.cbx-fav:checked').each(function(){
             matkul.push($(this).val());
@@ -99,7 +99,7 @@ $(document).ready(function () {
             hariMasuk[$(this).val()] = 1;
         });
         filter['hariMasuk'] = hariMasuk;
-        maksJam = [$('#jamSenin').val(),$('#jamSelasa').val(),$('#jamRabu').val(),$('#jamKamis').val(),$('#jamJumat').val(),$('#jamSabtu').val()]
+        maksJam = [parseInt($('#jamSenin').val()),parseInt($('#jamSelasa').val()),parseInt($('#jamRabu').val()),parseInt($('#jamKamis').val()),parseInt($('#jamJumat').val()),parseInt($('#jamSabtu').val())]
         filter['maksJam'] = maksJam;
         $(".loadScreen").css("display", "block");
         $(".boxHasil").hide().fadeIn();
@@ -107,12 +107,12 @@ $(document).ready(function () {
         console.log(active)
         console.log(filter)
         $.ajax({
-            url : '/generate/',
-            method : 'POST',
-            data : {
+            'url' : '/generate/',
+            'method' : 'POST',
+            'data' : JSON.stringify({
                 "active" : active,
                 "filter" : filter
-            },
+            }),
             success : function(response){
                 console.log(response);
                 $(".loadScreen").show().fadeOut();
@@ -169,7 +169,15 @@ $(document).ready(function () {
             $(".jamSabtu").css("display", "none");
         }
         })
-    
+        $.ajax({
+            url : '/get/',
+            type : 'POST',
+            success: function(response){
+                $.each(response['id'],function(key,value){
+                    active.push(value);
+                });
+            }
+        })
         $('#myTable').DataTable({
             responsive: true,
             ajax : {
@@ -191,7 +199,7 @@ $(document).ready(function () {
             "render" : function(data,type,row){
                 return `<div class="checkbox-wrapper-12">
                 <div class="cbx">
-                    <input class="cbx-matkul" id="cbx-`+row['id']+`" name="cbx-`+row['id']+`" type="checkbox" value='`+row['id']+`'>
+                    <input class="cbx-matkul" id="cbx-`+row['id']+`" name="cbx-`+row['id']+`" type="checkbox" value='`+row['id']+`' checked>
                     <label for="cbx-`+row['id']+`"></label>
                     <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
                     <path d="M2 8.36364L6.23077 12L13 2"></path>

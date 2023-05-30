@@ -1,17 +1,19 @@
 from algorithm.fitness import *
 import random
 from timeit import default_timer as timer
+from flask import jsonify
 # import numpy as np
 
 # generate random states
 def generateStates(listMatkul:list, maksSks:int) -> list:
     states = []
     titikAwal = int(maksSks / 3)
+    
     for i in range(80):
         state = np.array([1 for i in range(titikAwal)])
         state = np.append(state, [0 for i in range(listMatkul.__len__() - titikAwal)])
         np.random.shuffle(state)
-        states.append(state)
+        states.append(state.tolist())
     return states
 
 # find best fitness among all states
@@ -270,10 +272,13 @@ def run(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, 
     best = []
     states = []
     states = generateStates(listMatkul, 24)
+    # return jsonify(states)
     best = findBest(states, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav, [])
     end = timer()
     print('Time:', (end - start))
     print(best)
+    
+    return best
 
 # Senin = 0
 # Selasa = 27

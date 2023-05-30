@@ -2,7 +2,6 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import *
-from flask import *
 from api.tes import *
 from algorithm.matkul import *
 
@@ -56,8 +55,7 @@ def get_jad():
 @app.route("/generate/",methods=["POST"])
 # api buat generate
 def gener():
-    return request.data
-    data = json.loads(request.data)
+    data = json.loads(request.get_data())
     return generate(data['active'],data['filter'],3)
 
 @app.route("/load")
