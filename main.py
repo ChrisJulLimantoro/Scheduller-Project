@@ -56,6 +56,7 @@ def get_jad():
 @app.route("/generate/",methods=["POST"])
 # api buat generate
 def gener():
+    return request.data
     data = json.loads(request.data)
     return generate(data['active'],data['filter'],3)
 
