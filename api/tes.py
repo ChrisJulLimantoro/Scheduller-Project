@@ -79,11 +79,16 @@ def generate(active:list,filt:list, iterarion:int) -> list:
         print(best)
         if bestGlobal == []:
             bestGlobal = best
-            sorted(best, key=lambda x : x[1])
+            sorted(best, key=lambda x : x[1], reverse=True)
         else:
             for k in best:
-                if k[1] > bestGlobal[2][1] and not algo.cekKembar(k, bestGlobal) :
-                    bestGlobal[2] = k
-                    sorted(best, key=lambda x : x[1])
+                duplicate = True
+                for j in bestGlobal:
+                    duplicate = algo.cekKembar(k, j)
+
+                if not duplicate:
+                    bestGlobal.append(k)
+                    sorted(best, key=lambda x : x[1], reverse=True)
+                    bestGlobal.pop(4)
             
     return jsonify(bestGlobal)
