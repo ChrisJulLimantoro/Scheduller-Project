@@ -1,7 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from config import *
 from api.tes import *
 from algorithm.matkul import *
@@ -11,8 +11,8 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = getSQLAlchemyURI()
 app.config['SECRET_KEY'] = os.urandom(24)
-app.debug = True
-toolbar = DebugToolbarExtension(app)
+# app.debug = True
+# toolbar = DebugToolbarExtension(app)
 
 # initiate database connection (using sqlachemy)
 db = SQLAlchemy(app)

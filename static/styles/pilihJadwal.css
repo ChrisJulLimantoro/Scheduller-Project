@@ -1,6 +1,12 @@
 .form-control:focus, .form-select:focus {
-    border-width: 0.4vh;
+    border-width: 0.4vh !important;
     border-color: #198754;
+    box-shadow: 2px 17px 99px -30px rgba(0,0,0,0.95);
+}
+
+.form-control, .form-select {
+    border-width: 0.4vh !important;
+    border-color: transparent;
     box-shadow: 2px 17px 99px -30px rgba(0,0,0,0.95);
 }
 
