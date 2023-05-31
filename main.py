@@ -38,7 +38,7 @@ def api_test():
 @app.route("/insert/",methods = ["POST"])
 # api buat insert mata kuliah ke DB
 def insert():
-    data = json.loads(request.data)
+    data = json.loads(request.get_data())
     return insert_matkul(data)
 
 @app.route("/get_dosen/",methods =["POST"])
