@@ -159,42 +159,35 @@ $(document).ready(function () {
         
     });
 
-    // nama = data[i]['nama']
-    // sing = data[i]['singkatan']
-    // par = data[i]['paralel']
-    // dos = data[i]['dosen']
-    // rua = data[i]['ruangan']
-    // jk = data[i]['jadwal_kuliah']
-    // lama = data[i]['lama_kuliah']
-    // ju = data[i]['jadwal_ujian']
-    // sks = data[i]['sks']
-
     // tombol input
     $("#inputMatkul").click(function(e) {
         e.preventDefault()
-        // let jamMulai = $("#jamMulai").val()
-        // let jamSelesai = $("#jamSelesai").val()
-
 
         $.ajax({
             url : '/insert/',
             type : 'post',
-            data : {
+            data : JSON.stringify({
                 nama : $("#namaMataKuliah").val(),
-                singkatan : '',
+                singkatan : $("#singkatan").val(),
                 paralel : $("#kelasParalel").val(),
                 dosen : $("#namaDosen").val(),
                 ruangan : $("#ruangan").val(),
-                har_kuliah : $("#hariMatkul").val(),
+                hari_kuliah : $("#hariMatkul").val(),
                 jam_mulai : $("#jamMulai").val(),
+                menit_mulai : $("#menitMulai").val(),
                 jam_selesai : $("#jamSelesai").val(),
-                hari_ujian : $("#hariUjian").val(),
+                menit_selesai : $("#menitSelesai").val(),
                 minggu_ujian : $("#mingguUjian").val(),
-                jam_ujian_mulai : $("#jamUjianMulai").val(),
-                jam_ujian_selesai : $("#jamUjianSelesai").val(),
+                hari_ujian : $("#hariUjian").val(),
+                jam_mulai_ujian : $("#jamMulaiUjian").val(),
+                menit_mulai_ujian : $("#menitMulaiUjian").val(),
+                jam_selesai_ujian : $("#jamSelesaiUjian").val(),
+                menit_selesai_ujian : $("#menitSelesaiUjian").val(),
                 sks : $("#jumlahSKS").val(),
-            },
-
+            }),
+            success : function(response) {
+                console.log(response)
+            }
         })
     })
 

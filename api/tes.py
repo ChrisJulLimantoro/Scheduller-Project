@@ -52,7 +52,9 @@ def insert_matkul(data:list):
     lama = selesai_kuliah - mulai_kuliah
     ju = mat.convertJadwalToInt(data['hari_ujian'], int(data['jam_mulai_ujian']), int(data['menit_mulai_ujian']), int(data['minggu_ujian']))
     sks = data['sks']
-    matkul = main.db_matkul(name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
+
+    insertId = (main.db_matkul.query.count()+1)
+    matkul = main.db_matkul(id=insertId,name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
     main.db.session.add(matkul)
     main.db.session.commit()
     return "1"
