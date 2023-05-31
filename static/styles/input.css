@@ -1,0 +1,118 @@
+/* you can choose any color you want. don't be afraid to experiment  */
+
+.modal-body .input, .modal-body button {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px;
+    border: 0.1px solid #575cb5;
+  }
+  
+  .modal-body button {
+    background: #6d74e3;
+    border: none;
+  }
+  
+  .modal-body .wrapper {
+    position: relative;
+    /* transform: skewY(-14deg); */
+  }
+  
+  .modal-body .wrapper li, .modal-body button {
+    position: relative;
+    list-style: none;
+    width: 200px;
+    z-index: var(--i);
+    transition: 0.3s;
+    color: white;
+  }
+  
+  .modal-body .wrapper li::before, .modal-body button::before {
+    position: absolute;
+    content: '';
+    background: #6d74e3;
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.3s;
+  }
+  
+  .modal-body .wrapper li::after, .modal-body button::after {
+    position: absolute;
+    content: '';
+    background: #6d74e3;
+    width: 200px;
+    height: 100%;
+    top: -40px;
+    left: 0;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.3s;
+  }
+  
+  .modal-body .wrapper li:nth-child(1)::after, .modal-body .wrapper li:nth-child(1)::before {
+    background-color: #d8daf7;
+  }
+  
+  .modal-body .wrapper li:nth-child(2)::after, .modal-body .wrapper li:nth-child(2)::before {
+    background-color: #c2c5f3;
+  }
+  
+  .modal-body .wrapper li:nth-child(3)::after, .modal-body .wrapper li:nth-child(3)::before {
+    background-color: #989deb;
+  }
+  
+  .modal-body li .input {
+    outline: none;
+    border: none;
+    color: black;
+  }
+  
+  .modal-body li .input::placeholder {
+    color: black;
+  }
+  
+  .modal-body li:nth-child(1) .input {
+    background: #d8daf7;
+  }
+  
+  .modal-body li:nth-child(2) .input {
+    background: #c2c5f3;
+  }
+  
+  .modal-body li:nth-child(3) .input {
+    background: #989deb;
+  }
+  
+  
+  .modal-body li:nth-child(1) .input:focus {
+    outline: none;
+    border: 3.5px solid #d8daf7;
+  }
+  
+  .modal-body li:nth-child(2) .input:focus {
+    outline: none;
+    border: 3.5px solid #c2c5f3;
+  }
+  
+  .modal-body li:nth-child(3) .input:focus {
+    outline: none;
+    border: 3.5px solid #989deb;
+  }
+  
+  .modal-body .wrapper li:hover, .modal-body button:hover {
+    transform: translateX(-20px);
+  }
+  
+  .modal-body button:hover, .modal-body button:hover::before,.modal-body button:hover::after {
+    background: #575cb5;
+  }
+  
+  .modal-body button:active {
+    transform: translateX(0px);
+  }
+  
+  

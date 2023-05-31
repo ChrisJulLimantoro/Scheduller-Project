@@ -16,6 +16,7 @@
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/loader.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/pilihJadwal.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/input.css') }}">
 
   <script src="{{ url_for('static',filename='scripts/pilihJadwal.js') }}"></script>
   <script src="{{ url_for('static',filename='scripts/timePicker.js') }}"></script>
@@ -445,6 +446,22 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modalBody">
+          <form class="form">
+            <ul class="wrapper">
+              
+              <li style="--i:4;"><input class="input" type="text" placeholder="Name" required=""></li>
+              <li style="--i:3;">
+              <div class='input'>
+                <label for='tes'>Tes
+                <input class='input form-control' type='radio' value='12'>
+              </div>
+              
+              </li>
+              <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
+              <button style="--i:1;">Submit</button>
+            </ul>
+          </form>
+          
           <div class="d-flex justify-content-center mt-3">
             <h3>Mata Kuliah</h3>
           </div>
@@ -475,9 +492,9 @@
           <!-- Jadwal -->
           <label for="jamMulai" class="mt-4">Jadwal</label>
           <div class="input-group mt-2">
-            <input type="time" class="time-pickable form-control" readonly>
+            <input type="time" class="time-pickable form-control" id="jamMulai" readonly>
             <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" class="time-pickable form-control" readonly>
+            <input type="time" class="time-pickable form-control" id="jamSelesai" readonly>
           </div>
 
           <!-- Form Ujian -->
@@ -510,14 +527,18 @@
           <!-- Jam Ujian -->
           <label for="jamUjian" class="mt-4">Jam Ujian</label>
           <div class="input-group mt-2 mb-4">
-            <input type="time" id="jamUjianMulai" class="form-control" name="jamUjianMulai">
+            <div class="position-relative">
+              <input type="time" class="time-pickable form-control" readonly id="jamUjianMulai">
+            </div>
             <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" class="time-pickable form-control" readonly>
+            <div class="position-relative">
+              <input type="time" class="time-pickable form-control" readonly id="jamUjianSelesai">
+            </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Input</button>
+          <button type="button" class="btn btn-success" id="inputMatkul">Input</button>
         </div>
       </div>
     </div>

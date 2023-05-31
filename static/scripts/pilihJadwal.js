@@ -76,6 +76,7 @@ $(document).ready(function () {
         console.log(active)
     });
 
+    // tombol generate
     $(".generateButton").click(function (e) {
         e.preventDefault();
         // let active = [];
@@ -157,6 +158,45 @@ $(document).ready(function () {
         })
         
     });
+
+    // nama = data[i]['nama']
+    // sing = data[i]['singkatan']
+    // par = data[i]['paralel']
+    // dos = data[i]['dosen']
+    // rua = data[i]['ruangan']
+    // jk = data[i]['jadwal_kuliah']
+    // lama = data[i]['lama_kuliah']
+    // ju = data[i]['jadwal_ujian']
+    // sks = data[i]['sks']
+
+    // tombol input
+    $("#inputMatkul").click(function(e) {
+        e.preventDefault()
+        // let jamMulai = $("#jamMulai").val()
+        // let jamSelesai = $("#jamSelesai").val()
+
+
+        $.ajax({
+            url : '/insert/',
+            type : 'post',
+            data : {
+                nama : $("#namaMataKuliah").val(),
+                singkatan : '',
+                paralel : $("#kelasParalel").val(),
+                dosen : $("#namaDosen").val(),
+                ruangan : $("#ruangan").val(),
+                har_kuliah : $("#hariMatkul").val(),
+                jam_mulai : $("#jamMulai").val(),
+                jam_selesai : $("#jamSelesai").val(),
+                hari_ujian : $("#hariUjian").val(),
+                minggu_ujian : $("#mingguUjian").val(),
+                jam_ujian_mulai : $("#jamUjianMulai").val(),
+                jam_ujian_selesai : $("#jamUjianSelesai").val(),
+                sks : $("#jumlahSKS").val(),
+            },
+
+        })
+    })
 
         $("#senin").click(function () {
         if ($("#senin").is(":checked")) {
