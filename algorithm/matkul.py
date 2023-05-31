@@ -15,7 +15,7 @@ def convertJadwalToInt(hari,jam,menit,minggu=0):
     # hari hanya ada senin - sabtu (0-5)
     # 1 hari pasti dari 7.30 sampe 20.30 dengan perlompatan tiap 30 menit (27 jadwal)
     # contoh jika senin 8.30 maka di convert menjadi 2
-    return (int)(minggu*5*27 + hari*27 + (jam-7)*2 + (menit/30) - 1)
+    return (int)(minggu*6*27 + hari*27 + (jam-7)*2 + (menit/30) - 1)
     # hasil convert dalam bentuk 0 hingga sekian mengikuti  
 
 def convertIntToJadwal(convJadwal,lama):
