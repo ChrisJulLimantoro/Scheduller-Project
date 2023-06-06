@@ -46,11 +46,11 @@ def insert_matkul(data:list):
     par = data['paralel']
     dos = data['dosen']
     rua = data['ruangan']
-    mulai_kuliah = mat.convertJadwalToInt(data['hari_kuliah'], int(data['jam_mulai']), int(data['menit_mulai']))
-    selesai_kuliah = mat.convertJadwalToInt(data['hari_kuliah'], int(data['jam_selesai']), int(data['menit_selesai']))
+    mulai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_mulai']), int(data['menit_mulai']))
+    selesai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_selesai']), int(data['menit_selesai']))
     jk = mulai_kuliah
     lama = selesai_kuliah - mulai_kuliah
-    ju = mat.convertJadwalToInt(data['hari_ujian'], int(data['jam_mulai_ujian']), int(data['menit_mulai_ujian']), int(data['minggu_ujian']))
+    ju = mat.convertJadwalToInt(int(data['hari_ujian']), int(data['jam_mulai_ujian']), int(data['menit_mulai_ujian']), int(data['minggu_ujian']))
     sks = data['sks']
 
     insertId = (main.db_matkul.query.count()+1)
