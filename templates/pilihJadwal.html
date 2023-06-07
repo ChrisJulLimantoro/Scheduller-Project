@@ -16,6 +16,7 @@
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/loader.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/pilihJadwal.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/input.css') }}">
 
   <script src="{{ url_for('static',filename='scripts/pilihJadwal.js') }}"></script>
   <script src="{{ url_for('static',filename='scripts/timePicker.js') }}"></script>
@@ -269,19 +270,19 @@
       <!-- table hasil 1 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Pertama</h2>
           <br>
           <table class="table table-striped text-center" id="table1" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">SKS</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">SKS</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -296,20 +297,20 @@
       <!-- Jadwal Ujian hasil 1 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Pertama</h2>
           <br>
           <table class="table table-striped text-center" id="tableUjian1" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">Ruangan</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Minggu ke-</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">Ruangan</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Minggu ke-</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -324,19 +325,19 @@
       <!-- table hasil 2 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Kedua</h2>
           <br>
           <table class="table table-striped text-center" id="table2" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">SKS</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">SKS</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -351,20 +352,20 @@
       <!-- Jadwal Ujian hasil 2 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Kedua</h2>
           <br>
           <table class="table table-striped text-center" id="tableUjian2" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">Ruangan</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Minggu ke-</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">Ruangan</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Minggu ke-</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -379,19 +380,19 @@
       <!-- table hasil 3 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Ketiga</h2>
           <br>
           <table class="table table-striped text-center" id="table3" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">SKS</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">SKS</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -406,20 +407,20 @@
       <!-- Jadwal Ujian hasil 3 -->
       <div class="row">
         <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 boxHasil">
+        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Ketiga</h2>
           <br>
           <table class="table table-striped text-center" id="tableUjian3" style="margin-top: 1em;">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Mata Kuliah</th>
-                <th scope="col">Nama Dosen</th>
-                <th scope="col">Kelas Paralel</th>
-                <th scope="col">Ruangan</th>
-                <th scope="col">Hari</th>
-                <th scope="col">Minggu ke-</th>
-                <th scope="col">Jadwal</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nama Mata Kuliah</th>
+                <th scope="col" class="text-center">Nama Dosen</th>
+                <th scope="col" class="text-center">Kelas Paralel</th>
+                <th scope="col" class="text-center">Ruangan</th>
+                <th scope="col" class="text-center">Hari</th>
+                <th scope="col" class="text-center">Minggu ke-</th>
+                <th scope="col" class="text-center">Jadwal</th>
 
               </tr>
             </thead>
@@ -440,84 +441,177 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
-        <div class="modal-header bg-success text-light" data-bs-theme="dark">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Input Mata Kuliah</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="modalBody">
-          <div class="d-flex justify-content-center mt-3">
-            <h3>Mata Kuliah</h3>
+        <div class="modal-body mt-5" id="modalBody">
+          <form class="form text-success">
+            <ul class="wrapper">
+              <li style="--i:14;">
+                <div class="input row text-center">
+                  <label class="form-label text-success"><h3>Input Mata Kuliah</h3></label>
+              </div>
+              </li>
+              <li style="--i:13;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Nama Mata Kuliah</label>
+                  <input class="form-control form-control-sm col" placeholder="Nama Mata Kuliah" required="" id="namaMataKuliah">
           </div>
-          <!-- Nama Mata Kuliah -->
-          <label for="namaMataKuliah" class="">Nama Mata Kuliah</label>
-          <input id="namaMataKuliah" name="namaMataKuliah" type="text" aria-label="namaMataKuliah" class="form-control rounded mt-2" placeholder="Nama Mata Kuliah">
-          <!-- Nama Dosen -->
-          <label for="namaDosen" class="mt-4">Nama Dosen</label>
-          <input id="namaDosen" name="namaDosen" type="text" aria-label="namaDosen" class="form-control rounded mt-2" placeholder="Nama Dosen">
-          <!-- Kelas Paralel -->
-          <label for="kelasParalel" class="mt-4">Kelas Paralel</label>
-          <input id="kelasParalel" name="kelasParalel" type="text" aria-label="kelasParalel" class="form-control rounded mt-2" placeholder="Kelas Paralel">
-          <!-- Jumlah SKS -->
-          <label for="jumlahSKS" class="mt-4">Jumlah SKS</label>
-          <input id="jumlahSKS" name="jumlahSKS" type="text" aria-label="jumlahSKS" class="form-control rounded mt-2" placeholder="Jumlah SKS">
-          <!-- Hari -->
-          <label for="hariMatkul" class="mt-4">Hari Mata Kuliah</label>
-          <div class="rounded mt-2">
-            <select class="form-select" aria-label="Default select example" name="hariMatkul" id="hariMatkul">
-              <option value="0" selected>Senin</option>
-              <option value="1">Selasa</option>
-              <option value="2">Rabu</option>
-              <option value="3">Kamis</option>
-              <option value="4">Jumat</option>
-              <option value="5">sabtu</option>
+              </li>
+              <li style="--i:12;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Nama Singkatan</label>
+                  <input class="form-control form-control-sm col" placeholder="Nama Singkatan" required="" id="singkatan">
+                </div>
+              </li>
+              <li style="--i:11;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Kelas Paralel</label>
+                  <input class="form-control form-control-sm col" placeholder="Kelas Paralel" required="" id="kelasParalel">
+                </div>
+              </li>
+              <li style="--i:10;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Nama Dosen</label>
+                  <input class="form-control form-control-sm col" placeholder="Nama Dosen" required="" id="namaDosen">
+                </div>
+              </li>
+              <li style="--i:9;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Ruangan</label>
+                  <input class="form-control form-control-sm col" placeholder="Ruangan" required="" id="ruangan">
+                </div>
+              </li>
+              <li style="--i:8;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Hari Kuliah</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="hariMatkul">
+                    <option value="1"selected>Senin</option>
+                    <option value="2">Selasa</option>
+                    <option value="3">Rabu</option>
+                    <option value="4">Kamis</option>
+                    <option value="5">Jumat</option>
+                    <option value="6">Sabtu</option>
+                  </select>
+                </div>
+              </li>
+              <li style="--i:7;">
+                <div class="input input-group row">
+                  <label class="form-label col-3" for="namaMataKuliah">Jam Mulai</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamMulai">
+                    <option value="7"selected>07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="18">17</option>
+                    <option value="19">18</option>
+                    <option value="20">20</option>
+                  </select>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitMulai">
+                    <option value="0" selected>00</option>
+                    <option value="30">30</option>
+                  </select>
+                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">Jam Berakhir</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamSelesai">
+                    <option value="7"selected>07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="18">17</option>
+                    <option value="19">18</option>
+                    <option value="20">20</option>
+                  </select>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitSelesai">
+                    <option value="0" selected>00</option>
+                    <option value="30">30</option>
             </select>
           </div>
-          <!-- Jadwal -->
-          <label for="jamMulai" class="mt-4">Jadwal</label>
-          <div class="input-group mt-2">
-            <input type="time" class="time-pickable form-control" readonly>
-            <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" class="time-pickable form-control" readonly>
+              </li>
+              <li style="--i:6;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Jumlah SKS</label>
+                  <input class="form-control form-control-sm col" placeholder="Jumlah SKS" required="" id="jumlahSKS">
           </div>
-
-          <!-- Form Ujian -->
-          <div class="d-flex justify-content-center mt-5">
-            <h3>Ujian</h3>
+              </li>
+              <li style="--i:5;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Minggu Ujian</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="mingguUjian">
+                    <option value="1" selected>Minggu Ke-1</option>
+                    <option value="2">Minggu Ke-2</option>
+                  </select>
           </div>
-          <!-- Ruangan -->
-          <label for="ruangan" class="">Ruangan</label>
-          <input type="text" id="ruangan" name="ruangan" aria-label="ruangan" class="form-control rounded mt-2" placeholder="Ruangan">
-          <!-- Hari Ujian -->
-          <label for="hariUjian" class="mt-4">Hari Ujian</label>
-          <div class="rounded mt-2">
-            <select class="form-select" aria-label="Default select example" id="hariUjian">
-              <option value="1" selected>Senin</option>
+              </li>
+              <li style="--i:4;">
+                <div class="input row">
+                  <label class="form-label col-3" for="namaMataKuliah">Hari Ujian</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="hariUjian">
+                    <option value="1"selected>Senin</option>
               <option value="2">Selasa</option>
               <option value="3">Rabu</option>
               <option value="4">Kamis</option>
               <option value="5">Jumat</option>
-              <option value="6">sabtu</option>
+                    <option value="6">Sabtu</option>
             </select>
           </div>
-          <!-- Minggu Ke -->
-          <label for="mingguUjian" class="mt-4">Minggu Ke-</label>
-          <div class="rounded mt-2">
-            <select class="form-select" aria-label="Default select example" id="mingguUjian">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-            </select>
-          </div>
-          <!-- Jam Ujian -->
-          <label for="jamUjian" class="mt-4">Jam Ujian</label>
-          <div class="input-group mt-2 mb-4">
-            <input type="time" id="jamUjianMulai" class="form-control" name="jamUjianMulai">
-            <p class="mx-3 my-auto"><b>-</b></p>
-            <input type="time" class="time-pickable form-control" readonly>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Input</button>
+              </li>
+              <li style="--i:3;">
+                <div class="input input-group row">
+                  <label class="form-label col-3" for="namaMataKuliah">Jam Mulai</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamMulaiUjian">
+                    <option value="7"selected>07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="18">17</option>
+                    <option value="19">18</option>
+                    <option value="20">20</option>
+                  </select>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitMulaiUjian">
+                    <option value="0" selected>00</option>
+                    <option value="30">30</option>
+                  </select>
+                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">Jam Berakhir</label>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamSelesaiUjian">
+                    <option value="7"selected>07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="18">17</option>
+                    <option value="19">18</option>
+                    <option value="20">20</option>
+                  </select>
+                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitSelesaiUjian">
+                    <option value="0" selected>00</option>
+                    <option value="30">30</option>
+                  </select>
+              </div>
+              </li>
+              <button style="--i:2;" id="inputMatkul"><h5>SUBMIT</h5></button>
+              <button style="--i:1;" class="cancelButton" data-bs-dismiss="modal"><h5>CLOSE</h5></button>
+            </ul>
+          </form>
         </div>
       </div>
     </div>

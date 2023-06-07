@@ -76,6 +76,7 @@ $(document).ready(function () {
         console.log(active)
     });
 
+    // tombol generate
     $(".generateButton").click(function (e) {
         e.preventDefault();
         // let active = [];
@@ -157,6 +158,38 @@ $(document).ready(function () {
         })
         
     });
+
+    // tombol input
+    $("#inputMatkul").click(function(e) {
+        e.preventDefault()
+
+        $.ajax({
+            url : '/insert/',
+            type : 'post',
+            data : JSON.stringify({
+                nama : $("#namaMataKuliah").val(),
+                singkatan : $("#singkatan").val(),
+                paralel : $("#kelasParalel").val(),
+                dosen : $("#namaDosen").val(),
+                ruangan : $("#ruangan").val(),
+                hari_kuliah : $("#hariMatkul").val(),
+                jam_mulai : $("#jamMulai").val(),
+                menit_mulai : $("#menitMulai").val(),
+                jam_selesai : $("#jamSelesai").val(),
+                menit_selesai : $("#menitSelesai").val(),
+                minggu_ujian : $("#mingguUjian").val(),
+                hari_ujian : $("#hariUjian").val(),
+                jam_mulai_ujian : $("#jamMulaiUjian").val(),
+                menit_mulai_ujian : $("#menitMulaiUjian").val(),
+                jam_selesai_ujian : $("#jamSelesaiUjian").val(),
+                menit_selesai_ujian : $("#menitSelesaiUjian").val(),
+                sks : $("#jumlahSKS").val(),
+            }),
+            success : function(response) {
+                console.log(response)
+            }
+        })
+    })
 
         $("#senin").click(function () {
         if ($("#senin").is(":checked")) {

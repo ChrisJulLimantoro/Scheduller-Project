@@ -40,18 +40,22 @@ def get_jadwal():
     return jsonify(jadwal)
 
 def insert_matkul(data:list):
-    for i in data:
-        nama = data[i]['nama']
-        sing = data[i]['singkatan']
-        par = data[i]['paralel']
-        dos = data[i]['dosen']
-        rua = data[i]['ruangan']
-        jk = data[i]['jadwal_kuliah']
-        lama = data[i]['lama_kuliah']
-        ju = data[i]['jadwal_ujian']
-        sks = data[i]['sks']
-        matkul = main.db_matkul(name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
-        main.db.session.add(matkul)
+    # for i in data:
+    nama = data['nama']
+    sing = data['singkatan']
+    par = data['paralel']
+    dos = data['dosen']
+    rua = data['ruangan']
+    mulai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_mulai']), int(data['menit_mulai']))
+    selesai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_selesai']), int(data['menit_selesai']))
+    jk = mulai_kuliah
+    lama = selesai_kuliah - mulai_kuliah
+    ju = mat.convertJadwalToInt(int(data['hari_ujian']), int(data['jam_mulai_ujian']), int(data['menit_mulai_ujian']), int(data['minggu_ujian']))
+    sks = data['sks']
+
+    insertId = (main.db_matkul.query.count()+1)
+    matkul = main.db_matkul(id=insertId,name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
+    main.db.session.add(matkul)
     main.db.session.commit()
     return "1"
 

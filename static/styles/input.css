@@ -1,0 +1,344 @@
+/* you can choose any color you want. don't be afraid to experiment  */
+.modal-content {
+  background-color: transparent !important;
+  border: 0px !important
+}
+
+.modal-body {
+  color: #42ba96 !important;
+}
+
+.modal-body .form-control, .modal-body .form-select {
+  background-color: rgba(51, 170, 51, .1) !important;
+}
+
+.modal-header {
+  background-color: transparent !important;
+  border: 0px !important
+}
+
+.modal-body .input, .modal-body button {
+    width: 100%;
+  height: 50px;
+    position: relative;
+    padding: 10px;
+  border: 0.1px solid #5cb85c;
+  }
+  
+  .modal-body button {
+  background: #5cb85c;
+    border: none;
+  }
+  
+.cancelButton {
+  background: #ff3f55;
+}
+  
+  .modal-body .wrapper {
+    position: relative;
+  transform: skewY(-2deg);
+  }
+  
+  .modal-body .wrapper li, .modal-body button {
+    position: relative;
+    list-style: none;
+  width: 100%;
+    z-index: var(--i);
+    transition: 0.3s;
+    color: white;
+  }
+  
+  .modal-body .wrapper li::before, .modal-body button::before {
+    position: absolute;
+    content: '';
+  background: #5cb85c;
+    top: 0;
+  left: -50px;
+  width: 50px;
+  height: 50px;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.3s;
+  }
+  
+.cancelButton::before {
+  background: #ff3f55 !important;
+}
+
+.cancelButton {
+  background: #ff3f55 !important;
+}
+
+.modal-body ul {
+  left: 9px !important;
+}
+
+li .input {
+  left: 12px !important;
+}
+
+  .modal-body .wrapper li::after, .modal-body button::after {
+    position: absolute;
+    content: '';
+  background: #5cb85c;
+  width: 100%;
+  height: 50px;
+  top: -50px;
+    left: 0;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.3s;
+  }
+  
+.cancelButton::after {
+  background-color: #ff3f55 !important;
+}
+
+  .modal-body .wrapper li:nth-child(1)::after, .modal-body .wrapper li:nth-child(1)::before {
+  background-color: #ffffff;
+  }
+  
+  .modal-body .wrapper li:nth-child(2)::after, .modal-body .wrapper li:nth-child(2)::before {
+  background-color: #f0f9f0;
+  }
+  
+  .modal-body .wrapper li:nth-child(3)::after, .modal-body .wrapper li:nth-child(3)::before {
+  background-color: #e5f4e5;
+}
+
+.modal-body .wrapper li:nth-child(4)::after, .modal-body .wrapper li:nth-child(4)::before {
+  background-color: #d9efd9;
+}
+
+.modal-body .wrapper li:nth-child(5)::after, .modal-body .wrapper li:nth-child(5)::before {
+  background-color: #ceeace;
+}
+
+.modal-body .wrapper li:nth-child(6)::after, .modal-body .wrapper li:nth-child(6)::before {
+  background-color: #c2e5c2;
+}
+
+.modal-body .wrapper li:nth-child(7)::after, .modal-body .wrapper li:nth-child(7)::before {
+  background-color: #b7e0b7;
+}
+
+.modal-body .wrapper li:nth-child(8)::after, .modal-body .wrapper li:nth-child(8)::before {
+  background-color: #acdbac;
+}
+
+.modal-body .wrapper li:nth-child(9)::after, .modal-body .wrapper li:nth-child(9)::before {
+  background-color: #a0d6a0;
+}
+
+.modal-body .wrapper li:nth-child(10)::after, .modal-body .wrapper li:nth-child(10)::before {
+  background-color: #95d195;
+}
+
+.modal-body .wrapper li:nth-child(11)::after, .modal-body .wrapper li:nth-child(11)::before {
+  background-color: #8acc8a;
+}
+
+.modal-body .wrapper li:nth-child(12)::after, .modal-body .wrapper li:nth-child(12)::before {
+  background-color: #7ec77e;
+}
+
+.modal-body .wrapper li:nth-child(13)::after, .modal-body .wrapper li:nth-child(13)::before {
+  background-color: #73c273;
+}
+
+.modal-body .wrapper li:nth-child(14)::after, .modal-body .wrapper li:nth-child(14)::before {
+  background-color: #5cb85c;
+}
+
+.modal-body .wrapper li:nth-child(15)::after, .modal-body .wrapper li:nth-child(15)::before {
+  background-color: #d8daf7;
+}
+
+.modal-body .wrapper li:nth-child(16)::after, .modal-body .wrapper li:nth-child(16)::before {
+  background-color: #d8daf7;
+}
+
+.modal-body .wrapper li:nth-child(17)::after, .modal-body .wrapper li:nth-child(17)::before {
+  background-color: #d8daf7;
+  }
+  
+  .modal-body li .input {
+    outline: none;
+    border: none;
+    color: black;
+  }
+  
+  .modal-body li .input::placeholder {
+    color: black;
+  }
+  
+  .modal-body li:nth-child(1) .input {
+  background: #ffffff;
+  }
+  
+  .modal-body li:nth-child(2) .input {
+  background: #f0f9f0;
+  }
+  
+  .modal-body li:nth-child(3) .input {
+  background: #e5f4e5;
+}
+
+.modal-body li:nth-child(4) .input {
+  background: #d9efd9;
+}
+
+.modal-body li:nth-child(5) .input {
+  background: #ceeace;
+}
+
+.modal-body li:nth-child(6) .input {
+  background: #c2e5c2;
+}
+
+.modal-body li:nth-child(7) .input {
+  background: #b7e0b7;
+}
+
+.modal-body li:nth-child(8) .input {
+  background: #acdbac;
+}
+
+.modal-body li:nth-child(9) .input {
+  background: #a0d6a0;
+}
+
+.modal-body li:nth-child(10) .input {
+  background: #95d195;
+}
+
+.modal-body li:nth-child(11) .input {
+  background: #8acc8a;
+}
+
+.modal-body li:nth-child(12) .input {
+  background: #7ec77e;
+}
+
+.modal-body li:nth-child(13) .input {
+  background: #73c273;
+}
+
+.modal-body li:nth-child(14) .input {
+  background: #5cb85c;
+}
+
+.modal-body li:nth-child(15) .input {
+  background: #989deb;
+}
+
+.modal-body li:nth-child(16) .input {
+    background: #989deb;
+  }
+  
+.modal-body li:nth-child(17) .input {
+  background: #989deb;
+}
+  
+  .modal-body li:nth-child(1) .input:focus {
+    outline: none;
+  border: 3.5px solid #ffffff;
+  }
+  
+  .modal-body li:nth-child(2) .input:focus {
+    outline: none;
+  border: 3.5px solid #f0f9f0;
+  }
+  
+  .modal-body li:nth-child(3) .input:focus {
+    outline: none;
+  border: 3.5px solid #e5f4e5;
+}
+  
+.modal-body li:nth-child(4) .input:focus {
+  outline: none;
+  border: 3.5px solid #d9efd9;
+}
+  
+.modal-body li:nth-child(5) .input:focus {
+  outline: none;
+  border: 3.5px solid #ceeace;
+}
+
+.modal-body li:nth-child(6) .input:focus {
+  outline: none;
+  border: 3.5px solid #c2e5c2;
+}
+  
+.modal-body li:nth-child(7) .input:focus {
+  outline: none;
+  border: 3.5px solid #b7e0b7;
+}
+  
+.modal-body li:nth-child(8) .input:focus {
+  outline: none;
+  border: 3.5px solid #acdbac;
+}
+  
+.modal-body li:nth-child(9) .input:focus {
+  outline: none;
+  border: 3.5px solid #a0d6a0;
+}
+  
+.modal-body li:nth-child(10) .input:focus {
+  outline: none;
+  border: 3.5px solid #95d195;
+}
+  
+.modal-body li:nth-child(11) .input:focus {
+  outline: none;
+  border: 3.5px solid #8acc8a;
+}
+  
+.modal-body li:nth-child(12) .input:focus {
+  outline: none;
+  border: 3.5px solid #7ec77e;
+}
+
+.modal-body li:nth-child(13) .input:focus {
+  outline: none;
+  border: 3.5px solid #73c273;
+}
+
+.modal-body li:nth-child(14) .input:focus {
+  outline: none;
+  border: 3.5px solid #5cb85c;
+}
+
+.modal-body li:nth-child(15) .input:focus {
+  outline: none;
+  border: 3.5px solid #d8daf7;
+}
+
+.modal-body li:nth-child(16) .input:focus {
+  outline: none;
+  border: 3.5px solid #d8daf7;
+}
+
+.modal-body li:nth-child(17) .input:focus {
+  outline: none;
+  border: 3.5px solid #d8daf7;
+  }
+  
+  .modal-body .wrapper li:hover, .modal-body button:hover {
+    transform: translateX(-20px);
+  }
+  
+  .modal-body button:hover, .modal-body button:hover::before,.modal-body button:hover::after {
+  background: #5cb85c;
+}
+
+.modal-body .cancelButton:hover, .modal-body .cancelButton:hover::before,.modal-body .cancelButton:hover::after {
+  background: #ff3f55 !important;
+  }
+  
+  .modal-body button:active {
+    transform: translateX(0px);
+  }
+  
+  
