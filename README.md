@@ -19,6 +19,9 @@ If this is your first time using this application then you need to initialize al
 
 `make init ` => this command purpose is to initialize the dependencies needed
 
-`make migrate ` => this command purpose is to create the migration script and initialize 
+`make migrate ` => this command purpose is to create the migration script and initialize table
 
-`make default`
+`make default ` => this command is the main command to run and import sql into database (use `make run` if you do not wish to reset the database)
+
+
+If you simply want to run the Application just use command `make run` or `make default` if you want to reset the database too.

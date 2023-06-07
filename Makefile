@@ -14,7 +14,6 @@ init:
 	pip install flask flask_sqlalchemy flask_migrate psycopg2-binary
 
 migrate:
-	$(FLASK) db init
 	$(FLASK) db migrate
 
 upgrade:
