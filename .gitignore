@@ -1,7 +1,5 @@
 # ignore all __pycache__/
-__pycache__/*
-algorithm/__pycache__/*
-migrations/__pycache__/*
+*/__pycache__/*
 # ignore all versions/
 migrations/versions/*
 # ignore custom configuration
