@@ -186,7 +186,15 @@ $(document).ready(function () {
                 sks : $("#jumlahSKS").val(),
             }),
             success : function(response) {
-                console.log(response)
+                if(response == "1"){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Data berhasil ditambahkan!',
+                        'success'
+                    ).then((result)=>{
+                        window.location.reload();
+                    })
+                }
             }
         })
     })

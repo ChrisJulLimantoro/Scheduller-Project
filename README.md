@@ -1,28 +1,24 @@
 # scheduller_project
 
 This is a project based on python and flask framework.
-The installation is simple just clone this repository and use this basic command.
+
+This project is an AI Project focusing on Genetic Algorithm to solve schedulling of a class semester with all the common filtering.
+The installation is simple just clone this repository and follow this documentation.
 
 ## Requirement and installation
 
-`pip install flask` => for download the flask framework, skip if you already install flask.
+Since i'm using Makefile for simplification of the installation and running of this application so make sure to download Make dependencies. If you haven't installed then follow these easy installation steps on this link 'https://linuxhint.com/install-use-make-windows/'
 
-`pip install flask_sqlalchemy` => for download sql alchemy to do data model and migrations
-
-`pip install flask_migrate` => for download migration via flask to database
-
-`pip install psycopg2-binary` => only download if you are using postgres
+Other than Makefile this Application is also using PostgreSQL as the database. So make sure to download PostgreSQL or change the configuration to support your choice of database such as mySQL or MariaDB.
 
 ## How to Run and early setup
 
-To Setup fo to file config.py and setting your own connection to your database. The default database in this porject id postgres.
+Since we are using Make file so please read the documentation in Makefile, However if you only want to do the simple installation then follow these easy steps. (make sure to install MAKE first!)
 
-`python -m flask db init` => for initiation database and will create migrations folder
+If this is your first time using this application then you need to initialize all the dependencies needed in these flask application by typing this command on your terminal or powershell.
 
-`python -m flask db migrate` => for migration table to database automatically
+`make init ` => this command purpose is to initialize the dependencies needed
 
-`python -m flask db upgrade` => for upgrade if there is change on migrations script
+`make migrate ` => this command purpose is to create the migration script and initialize 
 
-`python -m flask db downgrade` => used downgrade for undo change on migration
-
-`python -m flask run --debug` => for running the flask program and creating the local environment for developing.
+`make default`

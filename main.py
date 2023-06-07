@@ -6,6 +6,7 @@ from config import *
 from api.tes import *
 from algorithm.matkul import *
 import os
+from commands import import_data_command
 
 # initiate app (flask based)
 app = Flask(__name__)
@@ -14,18 +15,17 @@ app.config['SECRET_KEY'] = os.urandom(24)
 # app.debug = True
 # toolbar = DebugToolbarExtension(app)
 
+# Register the custom command
+app.cli.add_command(import_data_command)
+
 # initiate database connection (using sqlachemy)
 db = SQLAlchemy(app)
 
 # initiate migration (using Migrate)
 migrate = Migrate(app,db)
 
-@app.route("/")
-def home():
-    return "<h1>CO membosankan</h1>"
-
 # routing and semi-controller
-@app.route("/pilihJadwal")
+@app.route("/")
 def testing():
     return render_template('pilihJadwal.html');
 
