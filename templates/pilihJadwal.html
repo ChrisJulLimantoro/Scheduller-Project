@@ -413,7 +413,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-body mt-5" id="modalBody">
-          <form class="form text-success">
+          <form class="form text-success" id="insert_matkul">
             <ul class="wrapper">
               <li style="--i:14;">
                 <div class="input row text-center">
@@ -422,162 +422,79 @@
               </li>
               <li style="--i:13;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Nama Mata Kuliah</label>
-                  <input class="form-control form-control-sm col" placeholder="Nama Mata Kuliah" required="" id="namaMataKuliah">
+                  <label class="form-label col-3" for="nama">{{ form.nama.label }}</label>
+                  {{ form.nama(class_="form-control form-control-sm col", placeholder="Nama Mata Kuliah") }}
           </div>
               </li>
               <li style="--i:12;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Nama Singkatan</label>
-                  <input class="form-control form-control-sm col" placeholder="Nama Singkatan" required="" id="singkatan">
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.sing.label }}</label>
+                  {{ form.sing(class_="form-control form-control-sm col", placeholder="Nama Singkatan") }}
                 </div>
               </li>
               <li style="--i:11;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Kelas Paralel</label>
-                  <input class="form-control form-control-sm col" placeholder="Kelas Paralel" required="" id="kelasParalel">
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.par.label }}</label>
+                  {{ form.par(class_="form-control form-control-sm col", placeholder="Kelas Paralel") }}
                 </div>
               </li>
               <li style="--i:10;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Nama Dosen</label>
-                  <input class="form-control form-control-sm col" placeholder="Nama Dosen" required="" id="namaDosen">
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.dos.label }}</label>
+                  {{ form.dos(class_="form-control form-control-sm col", placeholder="Nama Dosen") }}
                 </div>
               </li>
               <li style="--i:9;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Ruangan</label>
-                  <input class="form-control form-control-sm col" placeholder="Ruangan" required="" id="ruangan">
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.rua.label }}</label>
+                  {{ form.rua(class_="form-control form-control-sm col", placeholder="Ruangan") }}
                 </div>
               </li>
               <li style="--i:8;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Hari Kuliah</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="hariMatkul">
-                    <option value="1"selected>Senin</option>
-                    <option value="2">Selasa</option>
-                    <option value="3">Rabu</option>
-                    <option value="4">Kamis</option>
-                    <option value="5">Jumat</option>
-                    <option value="6">Sabtu</option>
-                  </select>
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.hari_kuliah.label }}</label>
+                  {{ form.hari_kuliah(class_="form-select form-select-sm form-control form-control-sm col", placeholder="Hari Kuliah") }}
                 </div>
               </li>
               <li style="--i:7;">
                 <div class="input input-group row">
-                  <label class="form-label col-3" for="namaMataKuliah">Jam Mulai</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamMulai">
-                    <option value="7"selected>07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="18">17</option>
-                    <option value="19">18</option>
-                    <option value="20">20</option>
-                  </select>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitMulai">
-                    <option value="0" selected>00</option>
-                    <option value="30">30</option>
-                  </select>
-                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">Jam Berakhir</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamSelesai">
-                    <option value="7"selected>07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="18">17</option>
-                    <option value="19">18</option>
-                    <option value="20">20</option>
-                  </select>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitSelesai">
-                    <option value="0" selected>00</option>
-                    <option value="30">30</option>
-            </select>
-          </div>
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.jam_mulai.label }}</label>
+                  {{ form.jam_mulai(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Jam Mulai") }}
+                  {{ form.menit_mulai(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Menit Mulai") }}
+
+                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">{{ form.jam_selesai.label }}</label>
+                  {{ form.jam_selesai(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Jam Selesai") }}
+                  {{ form.menit_selesai(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Menit Selesai") }}
+                </div>
               </li>
               <li style="--i:6;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Jumlah SKS</label>
-                  <input class="form-control form-control-sm col" placeholder="Jumlah SKS" required="" id="jumlahSKS">
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.sks.label }}</label>
+                  {{ form.sks(class_="form-control form-control-sm col", placeholder="Jumlah SKS") }}
           </div>
               </li>
               <li style="--i:5;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Minggu Ujian</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="mingguUjian">
-                    <option value="1" selected>Minggu Ke-1</option>
-                    <option value="2">Minggu Ke-2</option>
-                  </select>
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.minggu_ujian.label }}</label>
+                  {{ form.minggu_ujian(class_="form-select form-select-sm form-control form-control-sm col", placeholder="Minggu Ujian") }}
           </div>
               </li>
               <li style="--i:4;">
                 <div class="input row">
-                  <label class="form-label col-3" for="namaMataKuliah">Hari Ujian</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col" aria-label="Default select example" id="hariUjian">
-                    <option value="1"selected>Senin</option>
-              <option value="2">Selasa</option>
-              <option value="3">Rabu</option>
-              <option value="4">Kamis</option>
-              <option value="5">Jumat</option>
-                    <option value="6">Sabtu</option>
-            </select>
-          </div>
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.hari_ujian.label }}</label>
+                  {{ form.hari_ujian(class_="form-select form-select-sm form-control form-control-sm col", placeholder="Hari Ujian") }}
+                </div>
               </li>
               <li style="--i:3;">
                 <div class="input input-group row">
-                  <label class="form-label col-3" for="namaMataKuliah">Jam Mulai</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamMulaiUjian">
-                    <option value="7"selected>07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="18">17</option>
-                    <option value="19">18</option>
-                    <option value="20">20</option>
-                  </select>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitMulaiUjian">
-                    <option value="0" selected>00</option>
-                    <option value="30">30</option>
-                  </select>
-                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">Jam Berakhir</label>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="jamSelesaiUjian">
-                    <option value="7"selected>07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="18">17</option>
-                    <option value="19">18</option>
-                    <option value="20">20</option>
-                  </select>
-                  <select class="form-select form-select-sm form-control form-control-sm col-1" aria-label="Default select example" id="menitSelesaiUjian">
-                    <option value="0" selected>00</option>
-                    <option value="30">30</option>
-                  </select>
-              </div>
+                  <label class="form-label col-3" for="namaMataKuliah">{{ form.jam_mulai_ujian.label }}</label>
+                  {{ form.jam_mulai_ujian(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Jam Mulai") }}
+                  {{ form.menit_mulai_ujian(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Menit Mulai") }}
+
+                  <label class="form-label col-3 ml-5 pl-5 text-center" for="namaMataKuliah">{{ form.jam_selesai.label }}</label>
+                  {{ form.jam_selesai_ujian(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Jam Selesai") }}
+                  {{ form.menit_selesai_ujian(class_="form-select form-select-sm form-control form-control-sm col-1", placeholder="Menit Selesai") }}
+                </div>
               </li>
               <button style="--i:2;" id="inputMatkul"><h5>SUBMIT</h5></button>
               <button style="--i:1;" class="cancelButton" data-bs-dismiss="modal"><h5>CLOSE</h5></button>

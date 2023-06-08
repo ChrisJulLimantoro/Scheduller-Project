@@ -116,8 +116,9 @@ $(document).ready(function () {
                 "filter" : filter
             }),
             success : function(response){
-                console.log(response);
+                // console.log(response);
                 $.each(response, function(index, value) {
+                    $("#table" + (index+1) + " tbody").empty();
                     $.each(response[index][0], function(key, value){
                         // console.log(response[index])       
                         $("#table" + (index+1) + ' tbody').append(`
@@ -166,25 +167,26 @@ $(document).ready(function () {
         $.ajax({
             url : '/insert/',
             type : 'post',
-            data : JSON.stringify({
-                nama : $("#namaMataKuliah").val(),
-                singkatan : $("#singkatan").val(),
-                paralel : $("#kelasParalel").val(),
-                dosen : $("#namaDosen").val(),
-                ruangan : $("#ruangan").val(),
-                hari_kuliah : $("#hariMatkul").val(),
-                jam_mulai : $("#jamMulai").val(),
-                menit_mulai : $("#menitMulai").val(),
-                jam_selesai : $("#jamSelesai").val(),
-                menit_selesai : $("#menitSelesai").val(),
-                minggu_ujian : $("#mingguUjian").val(),
-                hari_ujian : $("#hariUjian").val(),
-                jam_mulai_ujian : $("#jamMulaiUjian").val(),
-                menit_mulai_ujian : $("#menitMulaiUjian").val(),
-                jam_selesai_ujian : $("#jamSelesaiUjian").val(),
-                menit_selesai_ujian : $("#menitSelesaiUjian").val(),
-                sks : $("#jumlahSKS").val(),
-            }),
+            // data : JSON.stringify({
+            //     nama : $("#nama").val(),
+            //     singkatan : $("#sing").val(),
+            //     paralel : $("#par").val(),
+            //     dosen : $("#dos").val(),
+            //     ruangan : $("#rua").val(),
+            //     hari_kuliah : $("#hari_kuliah").val(),
+            //     jam_mulai : $("#jam_mulai").val(),
+            //     menit_mulai : parseInt($("#menit_mulai").val()),
+            //     jam_selesai : $("#jam_selesai").val(),
+            //     menit_selesai : $("#menit_selesai").val(),
+            //     minggu_ujian : $("#minggu_ujian").val(),
+            //     hari_ujian : $("#hari_ujian").val(),
+            //     jam_mulai_ujian : $("#jam_mulai_ujian").val(),
+            //     menit_mulai_ujian : $("#menit_mulai_ujian").val(),
+            //     jam_selesai_ujian : $("#jam_selesai_ujian").val(),
+            //     menit_selesai_ujian : $("#menit_selesai_ujian").val(),
+            //     sks : $("#sks").val(),
+            // }),
+            data : $("#insert_matkul").serialize(),
             success : function(response) {
                 if(response == "1"){
                     Swal.fire(
