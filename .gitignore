@@ -5,3 +5,4 @@ migrations/versions/*
 # ignore custom configuration
 config.py
 *.json
+*.csv
