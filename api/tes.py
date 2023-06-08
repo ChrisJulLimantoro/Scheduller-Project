@@ -3,6 +3,7 @@ from flask import jsonify
 import main
 import algorithm.matkul as mat
 import algorithm.algo as algo
+import pandas as pd
 
 def get_dosen() :
     dosen = []
@@ -38,6 +39,30 @@ def get_jadwal():
         matkul['sks'] = i.sks
         jadwal.append(matkul)
     return jsonify(jadwal)
+
+def upload_matkul(data):
+    response = {}
+    response['status'] = 0
+    if not data.filename.endswith('.csv'):
+        return jsonify(response)
+    else:
+        data.save('temp.csv')
+        df = pd.read_csv('temp.csv')
+        for i in range(df.shape[0]):
+            nama = df.iloc[i,1]
+            sing = df.iloc[i,2]
+            par = df.iloc[i,3]
+            dos = df.iloc[i,4]
+            rua = df.iloc[i,5]
+            jk = int(df.iloc[i,6])
+            lama = int(df.iloc[i,7])
+            ju = int(df.iloc[i,8])
+            sks = int(df.iloc[i,9])
+            matkul = main.db_matkul(name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
+            main.db.session.add(matkul)
+            main.db.session.commit()
+        response['status'] = 1
+        return jsonify(response)
 
 def insert_matkul(data:list):
     # for i in data:

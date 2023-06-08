@@ -29,12 +29,6 @@ migrate = Migrate(app,db)
 def testing():
     return render_template('pilihJadwal.html');
 
-@app.route("/test/",methods = ["POST"])
-def api_test():
-    data = json.loads(request.data)
-    
-    return convertIntToJadwal(int(data['jadwal']),int(data['lama']))
-
 @app.route("/insert/",methods = ["POST"])
 # api buat insert mata kuliah ke DB
 def insert():
@@ -62,7 +56,11 @@ def gener():
     data = json.loads(request.get_data())
     return generate(data['active'],data['filter'],3)
 
-
+@app.route("/upload/",methods=["POST"])
+# api buat upload
+def upload():
+    data = request.files['file']
+    return upload_matkul(data)
 # Model untuk DB & migration
 
 

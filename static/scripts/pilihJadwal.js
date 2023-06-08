@@ -255,7 +255,43 @@ $(document).ready(function () {
                     active.push(parseInt(response[key]['id']));
                 });
             }
-        })
+        });
+
+        $('#upload').on('click',function(e){
+            $('#upload').val('');
+        });
+
+        $('#upload').on('change', function(e){
+            e.preventDefault();
+            var dataForm = new FormData();
+            $.each($('#upload')[0].files, function(i, file) {
+                dataForm.append('file', file);
+            });
+            const xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                var response = JSON.parse(xhr.response);
+                if (response['status'] == 1){
+                    Swal.fire(
+                        'Berhasil!',
+                        'Data berhasil ditambahkan!',
+                        'success'
+                    ).then(()=>{
+                        window.location.reload();
+                    });
+                }else{
+                    Swal.fire(
+                        'Gagal!',
+                        'Data gagal ditambahkan!',
+                        'error'
+                    );
+                }
+            };
+
+            xhr.open('POST', '/upload/');
+            xhr.send(dataForm);
+
+        });
+
 
         $('#myTable').DataTable({
             responsive: true,
