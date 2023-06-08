@@ -4,3 +4,4 @@ __pycache__/
 migrations/versions/*
 # ignore custom configuration
 config.py
+*.json

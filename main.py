@@ -62,9 +62,6 @@ def gener():
     data = json.loads(request.get_data())
     return generate(data['active'],data['filter'],3)
 
-@app.route("/load")
-def load():
-    return render_template('loader.html')
 
 # Model untuk DB & migration
 
