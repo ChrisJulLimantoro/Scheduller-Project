@@ -12,7 +12,7 @@ run:
 	$(FLASK) run --debug
 # command to download the dependencies
 init:
-	pip install flask flask_sqlalchemy flask_migrate psycopg2-binary flask2postman
+	pip install flask flask_sqlalchemy flask_migrate psycopg2-binary flask2postman pandas WTForms
 # command to create the database
 migrate:
 	$(FLASK) db migrate
