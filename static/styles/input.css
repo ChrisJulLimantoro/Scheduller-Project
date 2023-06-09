@@ -18,48 +18,48 @@
 }
 
 .modal-body .input, .modal-body button {
-    width: 100%;
+  width: 100%;
   height: 50px;
-    position: relative;
-    padding: 10px;
+  position: relative;
+  padding: 10px;
   border: 0.1px solid #5cb85c;
-  }
+}
   
-  .modal-body button {
+.modal-body button {
   background: #5cb85c;
-    border: none;
-  }
+  border: none;
+}
   
 .cancelButton {
   background: #ff3f55;
 }
   
-  .modal-body .wrapper {
-    position: relative;
+.modal-body .wrapper {
+  position: relative;
   transform: skewY(-2deg);
-  }
-  
-  .modal-body .wrapper li, .modal-body button {
-    position: relative;
-    list-style: none;
+}
+
+.modal-body .wrapper li, .modal-body button {
+  position: relative;
+  list-style: none;
   width: 100%;
-    z-index: var(--i);
-    transition: 0.3s;
-    color: white;
-  }
-  
-  .modal-body .wrapper li::before, .modal-body button::before {
-    position: absolute;
-    content: '';
+  z-index: var(--i);
+  transition: 0.3s;
+  color: white;
+}
+
+.modal-body .wrapper li::before, .modal-body button::before {
+  position: absolute;
+  content: '';
   background: #5cb85c;
-    top: 0;
+  top: 0;
   left: -50px;
   width: 50px;
   height: 50px;
-    transform-origin: right;
-    transform: skewY(45deg);
-    transition: 0.3s;
-  }
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: 0.3s;
+}
   
 .cancelButton::before {
   background: #ff3f55 !important;
@@ -77,32 +77,32 @@ li .input {
   left: 12px !important;
 }
 
-  .modal-body .wrapper li::after, .modal-body button::after {
-    position: absolute;
-    content: '';
+.modal-body .wrapper li::after, .modal-body button::after {
+  position: absolute;
+  content: '';
   background: #5cb85c;
   width: 100%;
   height: 50px;
   top: -50px;
-    left: 0;
-    transform-origin: bottom;
-    transform: skewX(45deg);
-    transition: 0.3s;
-  }
+  left: 0;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.3s;
+}
   
 .cancelButton::after {
   background-color: #ff3f55 !important;
 }
 
-  .modal-body .wrapper li:nth-child(1)::after, .modal-body .wrapper li:nth-child(1)::before {
+.modal-body .wrapper li:nth-child(1)::after, .modal-body .wrapper li:nth-child(1)::before {
   background-color: #ffffff;
-  }
-  
-  .modal-body .wrapper li:nth-child(2)::after, .modal-body .wrapper li:nth-child(2)::before {
+}
+
+.modal-body .wrapper li:nth-child(2)::after, .modal-body .wrapper li:nth-child(2)::before {
   background-color: #f0f9f0;
-  }
+}
   
-  .modal-body .wrapper li:nth-child(3)::after, .modal-body .wrapper li:nth-child(3)::before {
+.modal-body .wrapper li:nth-child(3)::after, .modal-body .wrapper li:nth-child(3)::before {
   background-color: #e5f4e5;
 }
 
@@ -162,25 +162,25 @@ li .input {
   background-color: #d8daf7;
   }
   
-  .modal-body li .input {
-    outline: none;
-    border: none;
-    color: black;
-  }
+.modal-body li .input {
+  outline: none;
+  border: none;
+  color: black;
+}
   
-  .modal-body li .input::placeholder {
-    color: black;
-  }
-  
-  .modal-body li:nth-child(1) .input {
+.modal-body li .input::placeholder {
+  color: black;
+}
+
+.modal-body li:nth-child(1) .input {
   background: #ffffff;
-  }
-  
-  .modal-body li:nth-child(2) .input {
+}
+
+.modal-body li:nth-child(2) .input {
   background: #f0f9f0;
-  }
+}
   
-  .modal-body li:nth-child(3) .input {
+.modal-body li:nth-child(3) .input {
   background: #e5f4e5;
 }
 
@@ -240,18 +240,18 @@ li .input {
   background: #989deb;
 }
   
-  .modal-body li:nth-child(1) .input:focus {
-    outline: none;
+.modal-body li:nth-child(1) .input:focus {
+  outline: none;
   border: 3.5px solid #ffffff;
-  }
-  
-  .modal-body li:nth-child(2) .input:focus {
-    outline: none;
+}
+
+.modal-body li:nth-child(2) .input:focus {
+  outline: none;
   border: 3.5px solid #f0f9f0;
-  }
+}
   
-  .modal-body li:nth-child(3) .input:focus {
-    outline: none;
+.modal-body li:nth-child(3) .input:focus {
+  outline: none;
   border: 3.5px solid #e5f4e5;
 }
   
@@ -323,22 +323,20 @@ li .input {
 .modal-body li:nth-child(17) .input:focus {
   outline: none;
   border: 3.5px solid #d8daf7;
-  }
+}
   
-  .modal-body .wrapper li:hover, .modal-body button:hover {
-    transform: translateX(-20px);
-  }
+.modal-body .wrapper li:hover, .modal-body button:hover {
+  transform: translateX(-20px);
+}
   
-  .modal-body button:hover, .modal-body button:hover::before,.modal-body button:hover::after {
+.modal-body button:hover, .modal-body button:hover::before,.modal-body button:hover::after {
   background: #5cb85c;
 }
 
 .modal-body .cancelButton:hover, .modal-body .cancelButton:hover::before,.modal-body .cancelButton:hover::after {
   background: #ff3f55 !important;
-  }
+}
   
-  .modal-body button:active {
-    transform: translateX(0px);
-  }
-  
-  
+.modal-body button:active {
+  transform: translateX(0px);
+}

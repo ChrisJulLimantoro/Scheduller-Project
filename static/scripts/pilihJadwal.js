@@ -72,8 +72,6 @@ $(document).ready(function () {
                 active.splice(index, 1)
             }
         }
-
-        console.log(active)
     });
 
     // tombol generate
@@ -106,8 +104,8 @@ $(document).ready(function () {
         $(".loadScreen").css("display", "block");
         $(".boxHasil").hide().fadeIn();
         
-        console.log(active)
-        console.log(filter)
+        // console.log(active)
+        // console.log(filter)
         $.ajax({
             'url' : '/generate/',
             'method' : 'POST',
@@ -116,11 +114,11 @@ $(document).ready(function () {
                 "filter" : filter
             }),
             success : function(response){
-                // console.log(response);
+                console.log(response);
                 $.each(response, function(index, value) {
                     $("#table" + (index+1) + " tbody").empty();
+                    $("#tableUjian" + (index+1) + " tbody").empty();
                     $.each(response[index][0], function(key, value){
-                        // console.log(response[index])       
                         $("#table" + (index+1) + ' tbody').append(`
                         <tr>
                             <th scope="row">` + (key+1) + `</th>
@@ -167,25 +165,6 @@ $(document).ready(function () {
         $.ajax({
             url : '/insert/',
             type : 'post',
-            // data : JSON.stringify({
-            //     nama : $("#nama").val(),
-            //     singkatan : $("#sing").val(),
-            //     paralel : $("#par").val(),
-            //     dosen : $("#dos").val(),
-            //     ruangan : $("#rua").val(),
-            //     hari_kuliah : $("#hari_kuliah").val(),
-            //     jam_mulai : $("#jam_mulai").val(),
-            //     menit_mulai : parseInt($("#menit_mulai").val()),
-            //     jam_selesai : $("#jam_selesai").val(),
-            //     menit_selesai : $("#menit_selesai").val(),
-            //     minggu_ujian : $("#minggu_ujian").val(),
-            //     hari_ujian : $("#hari_ujian").val(),
-            //     jam_mulai_ujian : $("#jam_mulai_ujian").val(),
-            //     menit_mulai_ujian : $("#menit_mulai_ujian").val(),
-            //     jam_selesai_ujian : $("#jam_selesai_ujian").val(),
-            //     menit_selesai_ujian : $("#menit_selesai_ujian").val(),
-            //     sks : $("#sks").val(),
-            // }),
             data : $("#insert_matkul").serialize(),
             success : function(response) {
                 if(response == "1"){
@@ -197,7 +176,14 @@ $(document).ready(function () {
                         window.location.reload();
                     })
                 }
-            }
+                else if (response == "0") {
+                    Swal.fire(
+                        'Gagal!',
+                        'Gagal menginput data! Silahkan periksa input anda dan coba lagi',
+                        'error'
+                    )
+                }
+            },
         })
     })
 

@@ -19,8 +19,6 @@ def cekFitness(state:list,listMat:list,minSks:int=15,maksSks:int=24,hariMasuk:li
             # print(listMat)
             active.append(listMat[i].singkatan)
             # print(len(active))
-            
-            # print('cek Collision : ',i,fitness)
             # cek jumlah sks
             countSks+=listMat[i].sks
             
@@ -30,13 +28,14 @@ def cekFitness(state:list,listMat:list,minSks:int=15,maksSks:int=24,hariMasuk:li
             
             # algo cek dosen fav
             if listMat[i].dosen in dosenFav:
-                fitness += 30
-                
+                fitness += 50
+            
             # algo cek matkul fav
-            if listMat[i].nama in matkulFav:
-                fitness += 80
+            if listMat[i].singkatan in matkulFav:
+                fitness += 100
     # print(countJam)
     # perhitungan fitness
+    # print('dosen & matkul: ', fitness)
     fitness += cekCollision(state, listMat)
     # print('cekCollission : ',fitness)
     fitness += cekSks(countSks,minSks,maksSks) # cek SKS

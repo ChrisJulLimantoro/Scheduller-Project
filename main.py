@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import *
 from api.tes import *
-from algorithm.matkul import *
+import algorithm.matkul as matkul
 from commands import import_data_command
 from wtforms import Form, StringField, validators, DateTimeField, PasswordField, BooleanField, SelectField, IntegerField
 # from wtforms.fields import html5 as h5fields
@@ -35,8 +35,15 @@ def testing():
 # api buat insert mata kuliah ke DB
 def insert():
     form = InsertForm(request.form)
-    if form.validate():
+    mulai_kuliah = matkul.convertJadwalToInt(int(form.hari_kuliah.data), int(form.jam_mulai.data), int(form.menit_mulai.data))
+    selesai_kuliah = matkul.convertJadwalToInt(int(form.hari_kuliah.data), int(form.jam_selesai.data), int(form.menit_selesai.data))
+    mulai_ujian = matkul.convertJadwalToInt(int(form.hari_ujian.data), int(form.jam_mulai_ujian.data), int(form.menit_mulai_ujian.data), int(form.minggu_ujian.data))
+    selesai_ujian = matkul.convertJadwalToInt(int(form.hari_ujian.data), int(form.jam_selesai_ujian.data), int(form.menit_selesai_ujian.data), int(form.minggu_ujian.data))
+
+    if form.validate() and (selesai_kuliah > mulai_kuliah) and (selesai_ujian > mulai_ujian):
         return insert_matkul(request.form)
+    
+    return "0"
 
 @app.route("/get_dosen/",methods =["POST"])
 # api buat get_dosen
@@ -80,67 +87,78 @@ class db_matkul(db.Model):
     sks = db.Column(db.Integer,nullable=False)
 
 class InsertForm(Form) :
-    nama = StringField('Nama Mata Kuliah', validators=[validators.InputRequired(), validators.length(max=100)])
-    sing = StringField("Nama Singkatan", validators=[validators.InputRequired(), validators.length(max=100)])
-    par = StringField("Kelas Paralel", validators=[validators.InputRequired(), validators.length(max=100)])
-    dos = StringField("Nama Dosen", validators=[validators.InputRequired(), validators.length(max=100)])
-    rua = StringField("Ruangan", validators=[validators.InputRequired(), validators.length(max=100)])
+    nama = StringField('Nama Mata Kuliah', validators=[validators.InputRequired(), validators.length(max=64)])
+    sing = StringField("Nama Singkatan", validators=[validators.InputRequired(), validators.length(max=10)])
+    par = StringField("Kelas Paralel", validators=[validators.InputRequired(), validators.length(max=1)])
+    dos = StringField("Nama Dosen", validators=[validators.InputRequired(), validators.length(max=64)])
+    rua = StringField("Ruangan", validators=[validators.InputRequired(), validators.length(max=25)])
 
     hari_kuliah = SelectField(
         "Hari Kuliah", 
         validators=[validators.InputRequired(), validators.NumberRange(min=1, max=6)],
-        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')]
+        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')],
+        coerce=int
     )
     jam_mulai = SelectField(
         'Jam Mulai', 
         validators=[validators.InputRequired(), validators.NumberRange(min=7, max=20)],
-        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')]
+        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')],
+        coerce=int
     )
     menit_mulai = SelectField(
         'Menit Mulai', 
         validators=[validators.InputRequired(), validators.AnyOf([0, 30])],
-        choices=[(0, '00'), (30, '30')]
+        choices=[(0, '00'), (30, '30')],
+        coerce=int
     )
     jam_selesai = SelectField(
         'Jam Selesai', 
         validators=[validators.InputRequired(), validators.NumberRange(min=7, max=20)],
-        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')]
+        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')],
+        coerce=int
     )
     menit_selesai = SelectField(
         'Menit Selesai', 
         validators=[validators.InputRequired(), validators.AnyOf([0, 30])],
-        choices=[(0, '00'), (30, '30')]
+        choices=[(0, '00'), (30, '30')],
+        coerce=int
     )
 
     minggu_ujian = SelectField(
         'Minggu Ujian', 
         validators=[validators.InputRequired(), validators.NumberRange(min=1, max=2)],
-        choices=[(1, 'Minggu ke-1'), (2, 'Minggu ke-2')]
+        choices=[(1, 'Minggu ke-1'), (2, 'Minggu ke-2')],
+        coerce=int
     )
     hari_ujian = SelectField(
         "Hari Ujian", 
         validators=[validators.InputRequired(), validators.NumberRange(min=1, max=6)],
-        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')]
+        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')],
+        coerce=int
     )
     jam_mulai_ujian = SelectField(
         'Jam Mulai', 
         validators=[validators.InputRequired(), validators.NumberRange(min=7, max=20)],
-        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')]
+        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')],
+        coerce=int
     )
     menit_mulai_ujian = SelectField(
         'Menit Mulai', 
         validators=[validators.InputRequired(), validators.AnyOf([0, 30])],
-        choices=[(0, '00'), (30, '30')]
+        choices=[(0, '00'), (30, '30')],
+        coerce=int
     )
     jam_selesai_ujian = SelectField(
         'Jam Selesai', 
         validators=[validators.InputRequired(), validators.NumberRange(min=7, max=20)],
-        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')]
+        choices=[(7, '07'), (8, '08'), (9, '09'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20')],
+        coerce=int
     )
     menit_selesai_ujian = SelectField(
         'Menit Selesai', 
         validators=[validators.InputRequired(), validators.AnyOf([0, 30])],
-        choices=[(0, '00'), (30, '30')]
+        choices=[(0, '00'), (30, '30')],
+        coerce=int
     )
 
-    sks = IntegerField('Jumlah SKS', validators=[validators.InputRequired()])
+    sks = IntegerField('Jumlah SKS', validators=[validators.InputRequired(), validators.NumberRange(min=1)])

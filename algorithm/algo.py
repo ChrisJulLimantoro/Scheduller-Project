@@ -271,13 +271,12 @@ def run(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, 
     start = timer()
     best = []
     states = []
-    states = generateStates(listMatkul, 24)
+    states = generateStates(listMatkul, maksSks)
     # return jsonify(states)
     best = findBest(states, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav, [])
     end = timer()
     print('Time:', (end - start))
     print(best)
-    
     return best
 
 # Senin = 0
@@ -292,31 +291,31 @@ def run(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, 
 #     Matkul("Cyber Ops", "Cops", "B", "P 502", "Andreas", 0, 6, 2, 3),
 #     Matkul("Cyber Ops", "Cops", "A", "P 502", "Leo", 27, 6, 2, 3),
 #     Matkul("Cyber Ops", "Cops", "C", "P 502", "Agus", 27, 6, 2, 3),
-#     Matkul("Sistem Operasi", "SO", "A", "P 502", "Rudi", 2, 4, 6, 3),
-#     Matkul("Sistem Operasi", "SO", "C", "P 502", "Agus", 76, 4, 6, 3),
-#     Matkul("Sistem Operasi", "SO", "B", "P 502", "Rudi", 141, 3, 6, 3),
-#     Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 2, 6, 10, 3),
-#     Matkul("Grafika Komputer", "Grafkom", "B", "P 502", "Liliana", 12, 6, 10, 3),
-#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "C", "P 502", "Lily", 12, 6, 14, 3),
-#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "D", "P 502", "Alex", 60, 6, 14, 3),
-#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "B", "P 502", "Silvia", 66, 6, 14, 3),
-#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "A", "P 502", "Yulia", 93, 6, 14, 3),
-#     Matkul("Komunikasi Interpersonal", "Komal", "B", "P 502", "Stephanus", 12, 6, 18, 3),
-#     Matkul("Komunikasi Interpersonal", "Komal", "A", "P 502", "Stephanus", 41, 6, 18, 3),
-#     Matkul("Komunikasi Interpersonal", "Komal", "C", "P 502", "Stephanus", 40, 6, 18, 3),
-#     Matkul("Komunikasi Interpersonal", "Komal", "D", "P 502", "Stephanus", 92, 6, 18, 3),
-#     Matkul("Kecerdasan Buatan", "KB", "C", "P 502", "Alvin", 35, 6, 22, 3),
-#     Matkul("Kecerdasan Buatan", "KB", "B", "P 502", "Greg", 66, 6, 22, 3),
-#     Matkul("Kecerdasan Buatan", "KB", "A", "P 502", "Hans", 35, 6, 22, 3),
-#     Matkul("Interaksi Manusia Komputer", "IMK", "C", "P 502", "Adi", 54, 6, 26, 3),
-#     Matkul("Interaksi Manusia Komputer", "IMK", "A", "P 502", "Andreas", 72, 6, 26, 3),
-#     Matkul("Interaksi Manusia Komputer", "IMK", "B", "P 502", "Krisna", 108, 6, 26, 3),
-#     Matkul("Metode Numerik", "Metnum", "A", "P 502", "Leo", 60, 4, 30, 2),
-#     Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 30, 2),
-#     Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 30, 2),
-#     Matkul("Statistika Terapan", "ST", "A", "P 502", "Stephanus", 81, 6, 34, 3),
-#     Matkul("Data Mining", "Datmin", "A", "P 502", "Stephanus", 87, 6, 38, 3),
-#     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 42, 3),
+#     Matkul("Sistem Operasi", "SO", "A", "P 502", "Rudi", 2, 4, 9, 3),
+#     Matkul("Sistem Operasi", "SO", "C", "P 502", "Agus", 76, 4, 9, 3),
+#     Matkul("Sistem Operasi", "SO", "B", "P 502", "Rudi", 141, 3, 9, 3),
+#     Matkul("Grafika Komputer", "Grafkom", "A", "P 502", "Liliana", 2, 6, 16, 3),
+#     Matkul("Grafika Komputer", "Grafkom", "B", "P 502", "Liliana", 12, 6, 16, 3),
+#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "C", "P 502", "Lily", 12, 6, 23, 10),
+#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "D", "P 502", "Alex", 60, 6, 23, 10),
+#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "B", "P 502", "Silvia", 66, 6, 23, 10),
+#     Matkul("Analisa Desain Sistem Informasi", "ADSI", "A", "P 502", "Yulia", 93, 6, 23, 10),
+#     Matkul("Komunikasi Interpersonal", "Komal", "B", "P 502", "Stephanus", 12, 6, 30, 3),
+#     Matkul("Komunikasi Interpersonal", "Komal", "A", "P 502", "Stephanus", 41, 6, 30, 3),
+#     Matkul("Komunikasi Interpersonal", "Komal", "C", "P 502", "Stephanus", 40, 6, 30, 3),
+#     Matkul("Komunikasi Interpersonal", "Komal", "D", "P 502", "Stephanus", 92, 6, 30, 3),
+#     Matkul("Kecerdasan Buatan", "KB", "C", "P 502", "Alvin", 35, 6, 37, 3),
+#     Matkul("Kecerdasan Buatan", "KB", "B", "P 502", "Greg", 66, 6, 37, 3),
+#     Matkul("Kecerdasan Buatan", "KB", "A", "P 502", "Hans", 35, 6, 37, 3),
+#     Matkul("Interaksi Manusia Komputer", "IMK", "C", "P 502", "Adi", 54, 6, 44, 3),
+#     Matkul("Interaksi Manusia Komputer", "IMK", "A", "P 502", "Andreas", 72, 6, 44, 3),
+#     Matkul("Interaksi Manusia Komputer", "IMK", "B", "P 502", "Krisna", 108, 6, 44, 3),
+#     Matkul("Metode Numerik", "Metnum", "A", "P 502", "Leo", 60, 4, 51, 2),
+#     Matkul("Metode Numerik", "Metnum", "B", "P 502", "Stephanus", 87, 4, 51, 2),
+#     Matkul("Metode Numerik", "Metnum", "C", "P 502", "Stephanus", 93, 4, 51, 2),
+#     Matkul("Statistika Terapan", "ST", "A", "P 502", "Stephanus", 81, 6, 58, 3),
+#     Matkul("Data Mining", "Datmin", "A", "P 502", "Stephanus", 87, 6, 65, 3),
+#     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 72, 3),
 # ]
 
-# run(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi','Krisna'], ['APB','IMK'], [])
+# run(listMat, 0, 12, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Lily'], ['ADSI'], [])

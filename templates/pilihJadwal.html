@@ -235,13 +235,8 @@
           <button type="button" class="btn btn-warning my-3 ms-3 generateButton">Generate</button>
         </div>
 
-      </div>
-      <!-- close table section -->
-
-      <!-- table hasil 1 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
+        <!-- table hasil 1 -->
+        <div class="mt-4 mt-5 p-4 me-3 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Pertama</h2>
           <br>
           <table class="table table-striped text-center" id="table1" style="margin-top: 1em;">
@@ -263,12 +258,9 @@
             </tbody>
           </table>
         </div>
-      </div>
 
-      <!-- Jadwal Ujian hasil 1 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
+        <!-- Jadwal Ujian hasil 1 -->
+        <div class="mt-4 mt-5 p-4 me-3 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Pertama</h2>
           <br>
           <table class="table table-striped text-center" id="tableUjian1" style="margin-top: 1em;">
@@ -291,12 +283,9 @@
             </tbody>
           </table>
         </div>
-      </div>
 
-      <!-- table hasil 2 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
+        <!-- table hasil 2 -->
+        <div class="mt-4 mt-5 p-4 me-3 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Kedua</h2>
           <br>
           <table class="table table-striped text-center" id="table2" style="margin-top: 1em;">
@@ -318,12 +307,9 @@
             </tbody>
           </table>
         </div>
-      </div>
 
-      <!-- Jadwal Ujian hasil 2 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
+        <!-- Jadwal Ujian hasil 2 -->
+        <div class="mt-4 mt-5 p-4 me-3 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Kedua</h2>
           <br>
           <table class="table table-striped text-center" id="tableUjian2" style="margin-top: 1em;">
@@ -346,12 +332,9 @@
             </tbody>
           </table>
         </div>
-      </div>
 
-      <!-- table hasil 3 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
-        <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
+       <!-- table hasil 3 -->
+        <div class="mt-4 mt-5 p-4 me-3 boxHasil">
           <h2 style="margin-top: 0.7em">Pilihan Ketiga</h2>
           <br>
           <table class="table table-striped text-center" id="table3" style="margin-top: 1em;">
@@ -373,11 +356,8 @@
             </tbody>
           </table>
         </div>
-      </div>
 
-      <!-- Jadwal Ujian hasil 3 -->
-      <div class="row">
-        <div class="col-md-3 col-1"></div>
+        <!-- Jadwal Ujian hasil 3 -->
         <div class="mt-4 mt-5 col-md-9 col-11 p-4 boxHasil">
           <h2 style="margin-top: 0.7em">Jadwal Ujian Pilihan Ketiga</h2>
           <br>
@@ -402,8 +382,8 @@
           </table>
         </div>
       </div>
+      <!-- close table section -->
     </div>
-
   </div>
   <!-- close inner div -->
   </div>
@@ -423,31 +403,31 @@
               <li style="--i:13;">
                 <div class="input row">
                   <label class="form-label col-3" for="nama">{{ form.nama.label }}</label>
-                  {{ form.nama(class_="form-control form-control-sm col", placeholder="Nama Mata Kuliah") }}
+                  {{ form.nama(class_="form-control form-control-sm col", placeholder="Nama Mata Kuliah (maks 64 huruf)") }}
           </div>
               </li>
               <li style="--i:12;">
                 <div class="input row">
                   <label class="form-label col-3" for="namaMataKuliah">{{ form.sing.label }}</label>
-                  {{ form.sing(class_="form-control form-control-sm col", placeholder="Nama Singkatan") }}
+                  {{ form.sing(class_="form-control form-control-sm col", placeholder="Nama Singkatan (maks 10 huruf)") }}
                 </div>
               </li>
               <li style="--i:11;">
                 <div class="input row">
                   <label class="form-label col-3" for="namaMataKuliah">{{ form.par.label }}</label>
-                  {{ form.par(class_="form-control form-control-sm col", placeholder="Kelas Paralel") }}
+                  {{ form.par(class_="form-control form-control-sm col", placeholder="Kelas Paralel (1 huruf)") }}
                 </div>
               </li>
               <li style="--i:10;">
                 <div class="input row">
                   <label class="form-label col-3" for="namaMataKuliah">{{ form.dos.label }}</label>
-                  {{ form.dos(class_="form-control form-control-sm col", placeholder="Nama Dosen") }}
+                  {{ form.dos(class_="form-control form-control-sm col", placeholder="Nama Dosen (maks 64 huruf)") }}
                 </div>
               </li>
               <li style="--i:9;">
                 <div class="input row">
                   <label class="form-label col-3" for="namaMataKuliah">{{ form.rua.label }}</label>
-                  {{ form.rua(class_="form-control form-control-sm col", placeholder="Ruangan") }}
+                  {{ form.rua(class_="form-control form-control-sm col", placeholder="Ruangan (maks 25 huruf)") }}
                 </div>
               </li>
               <li style="--i:8;">

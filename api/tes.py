@@ -67,16 +67,16 @@ def upload_matkul(data):
 def insert_matkul(data:list):
     # for i in data:
     nama = data['nama']
-    sing = data['singkatan']
-    par = data['paralel']
-    dos = data['dosen']
-    rua = data['ruangan']
+    sing = data['sing']
+    par = data['par']
+    dos = data['dos']
+    rua = data['rua']
     mulai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_mulai']), int(data['menit_mulai']))
     selesai_kuliah = mat.convertJadwalToInt(int(data['hari_kuliah']), int(data['jam_selesai']), int(data['menit_selesai']))
     jk = mulai_kuliah
     lama = selesai_kuliah - mulai_kuliah
     ju = mat.convertJadwalToInt(int(data['hari_ujian']), int(data['jam_mulai_ujian']), int(data['menit_mulai_ujian']), int(data['minggu_ujian']))
-    sks = data['sks']
+    sks = int(data['sks'])
 
     insertId = (main.db_matkul.query.count()+1)
     matkul = main.db_matkul(name=nama,singkatan=sing,paralel=par,dosen=dos,ruangan=rua,jadwal_kuliah=jk,lama_kuliah=lama,jadwal_ujian=ju,sks=sks)
