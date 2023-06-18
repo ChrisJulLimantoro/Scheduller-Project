@@ -137,6 +137,7 @@ def generate(active:list,filt:list, iterarion:int) -> list:
                 matkul['jadwal_ujian_mgg'],matkul['jadwal_ujian_hari'],matkul['jadwal_ujian_jam'] = mat.convertIntToJadwal(listMat[j].jadwalUjian,6)
                 matkul['sks'] = listMat[j].sks
                 listMatkul2.append(matkul)
+        listMatkul2 = sorted(listMatkul2, key=lambda x : x['jadwal_kuliah'])
         result.append([listMatkul2, i[1]])
         listMatkul2 = []
     result = sorted(result, key=lambda x : x[1], reverse=True) 
