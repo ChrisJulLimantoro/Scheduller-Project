@@ -69,9 +69,10 @@ def findBest(states:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:li
             #     percentage = percentage * abs(scoreChild)/100
             if (random.random() <= percentage):
                 # print('Before mutation:', child)
-                mutate(child, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
+                mutate(child, scoreChild)
                 # print('After mutation:', child)
             newStates.append(child)
+            scoreChild = cekFitness(child, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
 
             if scoreChild > best[0][1]:
                 kembar = False
@@ -168,9 +169,9 @@ def algoCross3(p1:list,p2:list):
             result[i] = p2[i]
     return result
 
-def mutate(gene:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, dosenFav:list, matkulFav:list):
+def mutate(gene:list, score:int):
     randomNum = random.random()
-    score = cekFitness(gene, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
+    # score = cekFitness(gene, listMatkul, minSks, maksSks, hariMasuk, maksJam, dosenFav, matkulFav)
     # bitFlipMutation(gene, score)
     if randomNum <= 0.33:
         bitFlipMutation(gene, score)
