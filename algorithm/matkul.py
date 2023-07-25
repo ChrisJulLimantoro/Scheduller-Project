@@ -21,10 +21,10 @@ def convertJadwalToInt(hari,jam,menit,minggu=0):
 
 def convertIntToJadwal(convJadwal,lama):
     convJadwal = convJadwal + 1
-    minggu = (int)(convJadwal/(5*27))+1
-    hari = (int)(convJadwal%(5*27)/27)
-    jam = (int)(((convJadwal%(5*27))%27)/2 + 7)
-    menit = (int)((((convJadwal%(5*27))%27)%2)*30)
+    minggu = (int)(convJadwal/(6*27))+1
+    hari = (int)(convJadwal%(6*27)/27)
+    jam = (int)(((convJadwal%(6*27))%27)/2 + 7)
+    menit = (int)((((convJadwal%(6*27))%27)%2)*30)
     res_jam = ""
     res_hari = ""
     if hari == 0:

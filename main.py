@@ -95,8 +95,8 @@ class InsertForm(Form) :
 
     hari_kuliah = SelectField(
         "Hari Kuliah", 
-        validators=[validators.InputRequired(), validators.NumberRange(min=1, max=6)],
-        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')],
+        validators=[validators.InputRequired(), validators.NumberRange(min=0, max=5)],
+        choices=[(0, 'Senin'), (1, 'Selasa'), (2, 'Rabu'), (3, 'Kamis'), (4, 'Jumat'), (5, 'Sabtu')],
         coerce=int
     )
     jam_mulai = SelectField(
@@ -126,14 +126,14 @@ class InsertForm(Form) :
 
     minggu_ujian = SelectField(
         'Minggu Ujian', 
-        validators=[validators.InputRequired(), validators.NumberRange(min=1, max=2)],
-        choices=[(1, 'Minggu ke-1'), (2, 'Minggu ke-2')],
+        validators=[validators.InputRequired(), validators.NumberRange(min=0, max=1)],
+        choices=[(0, 'Minggu ke-1'), (1, 'Minggu ke-2')],
         coerce=int
     )
     hari_ujian = SelectField(
         "Hari Ujian", 
-        validators=[validators.InputRequired(), validators.NumberRange(min=1, max=6)],
-        choices=[(1, 'Senin'), (2, 'Selasa'), (3, 'Rabu'), (4, 'Kamis'), (5, 'Jumat'), (6, 'Sabtu')],
+        validators=[validators.InputRequired(), validators.NumberRange(min=0, max=5)],
+        choices=[(0, 'Senin'), (1, 'Selasa'), (2, 'Rabu'), (3, 'Kamis'), (4, 'Jumat'), (5, 'Sabtu')],
         coerce=int
     )
     jam_mulai_ujian = SelectField(

@@ -86,6 +86,7 @@ def findBest(states:list, listMatkul:list, minSks:int, maksSks:int, hariMasuk:li
                     best.append([child, scoreChild])
                     best = sorted(best, key = lambda x : x[1])
 
+        fitness.clear()
         states.clear()
         states = newStates
         count += 1
@@ -319,4 +320,4 @@ def run(listMatkul:list, minSks:int, maksSks:int, hariMasuk:list, maksJam:list, 
 #     Matkul("Analisa Proses Bisnis", "APB", "A", "P 502", "Krisna", 93, 6, 72, 3),
 # ]
 
-# run(listMat, 0, 12, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Lily'], ['ADSI'], [])
+# run(listMat, 18, 24, [1,1,1,1,1,0], [12,12,12,12,12,0], ['Rudi', 'Krisna'], ['APB', 'IMK'], [])
